@@ -1,0 +1,349 @@
+.plantation-page {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Header */
+.plantation-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(243, 236, 229, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 27, 65, 0.06);
+  padding: 20px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  border: 1px solid rgba(26, 27, 65, 0.15);
+  padding: 10px 20px;
+  border-radius: 40px;
+  transition: var(--transition-smooth);
+  background: transparent;
+}
+
+.back-btn:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-color);
+  border-color: var(--text-primary);
+}
+
+.brand-badge {
+  font-size: 11px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  color: var(--accent-olive);
+  text-transform: uppercase;
+}
+
+/* Hero Section */
+.plantation-hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 10%, rgba(75, 83, 32, 0.05) 0%, transparent 80%);
+}
+
+.cursive-tag {
+  display: block;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--accent-brown);
+  margin-bottom: 12px;
+}
+
+.plantation-title {
+  font-size: 64px;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.plantation-title span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-olive);
+}
+
+.plantation-intro {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Estates Showcases */
+.estates-section {
+  padding: 40px 0 100px;
+}
+
+.estates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.estate-card {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.estate-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.estate-image-wrapper {
+  flex: 1.1;
+}
+
+.estate-image-box {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  background-color: rgba(26, 27, 65, 0.03);
+}
+
+.estate-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.estate-image-box:hover .estate-image {
+  transform: scale(1.06);
+}
+
+.estate-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(26, 27, 65, 0.5) 0%, rgba(26, 27, 65, 0) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 24px;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.estate-image-box:hover .estate-image-overlay {
+  opacity: 1;
+}
+
+.estate-image-overlay span {
+  color: var(--white);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: rgba(26, 27, 65, 0.7);
+  padding: 8px 18px;
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+}
+
+.estate-content {
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.estate-number {
+  font-size: 54px;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  color: var(--accent-olive);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.estate-title {
+  font-size: 40px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.estate-metadata {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(26, 27, 65, 0.08);
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-brown);
+}
+
+.estate-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.estate-ecology {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ecology-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(75, 83, 32, 0.06);
+  border: 1px solid rgba(75, 83, 32, 0.08);
+  color: var(--accent-olive);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Lightbox Modal */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(26, 27, 65, 0.95);
+  backdrop-filter: blur(16px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.lightbox-container {
+  position: relative;
+  max-width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-caption {
+  color: var(--white);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.lightbox-caption h3 {
+  color: var(--white);
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.lightbox-caption p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.lightbox-close:hover {
+  background-color: var(--white);
+  color: var(--text-primary);
+  transform: rotate(90deg);
+}
+
+/* Footer */
+.plantation-footer {
+  margin-top: auto;
+  border-top: 1px solid rgba(26, 27, 65, 0.06);
+  padding: 40px 0;
+  background-color: rgba(26, 27, 65, 0.02);
+}
+
+.plantation-footer p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .estate-card, .estate-card.reverse {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .estate-image-wrapper, .estate-content {
+    width: 100%;
+    flex: none;
+  }
+  
+  .plantation-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 576px) {
+  .plantation-title {
+    font-size: 38px;
+  }
+  
+  .estate-title {
+    font-size: 28px;
+  }
+}

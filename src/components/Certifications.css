@@ -1,0 +1,132 @@
+.certifications-section {
+  background-color: #F8F3EC; /* Soft warm luxury beige background */
+  padding: 120px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.cert-card {
+  background-color: var(--white);
+  border: 1px solid #EAE0D5;
+  border-radius: 24px;
+  padding: 48px 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  position: relative;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-card:hover {
+  background-color: #2D1B4E;
+  border-color: #2D1B4E;
+}
+
+.cert-icon-wrapper {
+  margin-bottom: 28px;
+  color: #2D1B4E; /* Elegance brand dark violet */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.4s ease;
+}
+
+.cert-card:hover .cert-icon-wrapper {
+  color: #F8F3EC;
+}
+
+.cert-svg {
+  width: 84px;
+  height: 84px;
+  stroke-width: 1.5;
+  display: block;
+}
+
+.cert-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-olive);
+  margin-bottom: 16px;
+  opacity: 0.8;
+  transition: color 0.4s ease, opacity 0.4s ease;
+}
+
+.cert-card:hover .cert-tag {
+  color: #EAE0D5;
+  opacity: 1;
+}
+
+.cert-card h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: #2D1B4E;
+  transition: color 0.4s ease;
+}
+
+.cert-card:hover h3 {
+  color: var(--white);
+}
+
+.cert-card p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  transition: color 0.4s ease;
+}
+
+.cert-card:hover p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Responsive Layout */
+@media (max-width: 1200px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .cert-card {
+    padding: 40px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .certifications-section {
+    padding: 80px 0;
+  }
+}
