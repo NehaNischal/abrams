@@ -7,7 +7,6 @@ const images = [
   '/src/assets/black_pepper.png',
   '/src/assets/coffee.png',
   '/src/assets/clove.png',
-  '/src/assets/ginger.png',
   '/src/assets/nutmeg.png'
 ];
 

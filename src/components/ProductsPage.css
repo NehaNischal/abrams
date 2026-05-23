@@ -1,0 +1,650 @@
+.products-page {
+  background: radial-gradient(circle at 50% 50%, #17072a 0%, #080111 100%);
+  min-height: 100vh;
+  color: #f5f2eb;
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient Drifting Particles - Optimized with hardware-accelerated static gradients (no GPU filter: blur penalty) */
+.ambient-particle {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  will-change: transform;
+  animation: floatAround 35s infinite ease-in-out alternate;
+}
+
+.particle-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(170, 59, 255, 0.14) 0%, rgba(170, 59, 255, 0) 70%);
+  top: 5%;
+  left: -15%;
+  animation-duration: 40s;
+}
+
+.particle-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(223, 183, 108, 0.07) 0%, rgba(223, 183, 108, 0) 70%);
+  top: 35%;
+  right: -20%;
+  animation-duration: 50s;
+  animation-delay: -5s;
+}
+
+.particle-3 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(93, 26, 156, 0.14) 0%, rgba(93, 26, 156, 0) 70%);
+  bottom: 15%;
+  left: -10%;
+  animation-duration: 45s;
+  animation-delay: -10s;
+}
+
+.particle-4 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(170, 59, 255, 0.1) 0%, rgba(170, 59, 255, 0) 70%);
+  bottom: -10%;
+  right: 5%;
+  animation-duration: 48s;
+  animation-delay: -15s;
+}
+
+@keyframes floatAround {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(60px, 40px, 0);
+  }
+  100% {
+    transform: translate3d(-30px, 50px, 0);
+  }
+}
+
+/* Header style for dark theme - solid background for zero scrolling repaints */
+.products-header {
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  background-color: #0b0112; /* Solid royal dark cover, zero lag */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #dfb76c; /* Polished sand gold */
+  font-size: 14px;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.back-btn:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(223, 183, 108, 0.4);
+}
+
+.brand-badge {
+  font-family: var(--font-heading);
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #dfb76c;
+  border-left: 2px solid #aa3bff; /* Neon violet border */
+  padding-left: 12px;
+}
+
+/* Hero Section */
+.products-hero {
+  padding: 80px 0 40px;
+}
+
+.cursive-tag {
+  font-family: var(--font-cursive);
+  font-size: 36px;
+  color: #dfb76c;
+  display: block;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.page-title {
+  font-size: 64px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.page-title span {
+  font-style: italic;
+  font-family: var(--font-heading);
+  color: #dfb76c;
+  font-weight: 400;
+}
+
+.page-subtitle-text {
+  font-size: 16px;
+  max-width: 650px;
+  margin: 0 auto 40px;
+  color: #b5a8c2; /* Lavendar-grey secondary color */
+  line-height: 1.8;
+}
+
+/* Filtering Tabs Container */
+.filter-tabs {
+  display: inline-flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px auto 40px;
+  background: rgba(29, 13, 48, 0.4);
+  padding: 6px;
+  border-radius: 100px;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  position: relative;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.tab-btn {
+  position: relative;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  background-color: transparent;
+  color: #b5a8c2;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: #ffffff;
+}
+
+.tab-btn.active {
+  color: #ffffff;
+}
+
+.active-tab-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #aa3bff 0%, #5d1a9c 100%); /* Neon royal purple active tab pill */
+  border-radius: 100px;
+  z-index: -1;
+  box-shadow: 0 4px 20px rgba(170, 59, 255, 0.4);
+}
+
+.tab-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Product Detail Grid */
+.products-grid-section {
+  padding: 40px 0 100px;
+}
+
+.products-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Obsidian Glass Card - optimized for lag-free rendering */
+.product-detail-card {
+  display: grid;
+  background: rgba(28, 11, 46, 0.95); /* Rich solid obsidian backing, zero scroll painting cost */
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(197, 160, 89, 0.25); /* Elegant gold card frame */
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease, border-color 0.8s ease;
+}
+
+.product-detail-card.card-even {
+  grid-template-columns: 45% 55%;
+}
+
+.product-detail-card.card-odd {
+  grid-template-columns: 55% 45%;
+}
+
+.product-detail-card.card-odd .product-visual-wrapper {
+  grid-column: 2;
+}
+
+.product-detail-card.card-odd .product-detail-content {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.product-detail-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 80px rgba(170, 59, 255, 0.25); /* Glowing violet box shadow */
+  border-color: rgba(170, 59, 255, 0.65); /* Violet-bright frame transition */
+}
+
+/* Luxury visual image wrapper with dark purple radial gradient backing */
+.product-visual-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 520px;
+  background: radial-gradient(circle at center, rgba(53, 10, 94, 0.5) 0%, rgba(13, 2, 26, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border-right: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.product-detail-card.card-odd .product-visual-wrapper {
+  border-right: none;
+  border-left: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.luxury-backdrop-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(170, 59, 255, 0.22) 0%, rgba(170, 59, 255, 0) 70%);
+  filter: blur(25px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.luxury-frame-border {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid rgba(223, 183, 108, 0.25); /* Subtle gold frame outline */
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.product-visual {
+  width: auto;
+  max-width: 90%;
+  height: auto;
+  max-height: 440px;
+  object-fit: contain; /* Complete packaging visible */
+  z-index: 3;
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.5));
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.product-detail-card:hover .product-visual {
+  transform: translateY(-8px) scale(1.04);
+  filter: drop-shadow(0 25px 45px rgba(170, 59, 255, 0.4)); /* Deep glowing violet package shadow */
+}
+
+.product-category-tag {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: rgba(170, 59, 255, 0.9); /* Vibrant Amethyst Violet */
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
+  z-index: 4;
+  box-shadow: 0 4px 10px rgba(170, 59, 255, 0.3);
+}
+
+/* Card Content Details */
+.product-detail-content {
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.product-brand-group {
+  margin-bottom: 20px;
+}
+
+.product-details-subtitle {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #dfb76c; /* Polished sand-gold for label */
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.product-details-title {
+  font-size: 40px;
+  font-family: var(--font-heading);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.product-details-desc {
+  font-size: 15px;
+  color: #b5a8c2; /* Lavender grey */
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* Details Panel Grid */
+.details-panel {
+  margin-bottom: 24px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  border-radius: 16px;
+  padding: 20px 24px;
+  background-color: rgba(13, 2, 26, 0.45); /* Obsidian core backing */
+  transition: all 0.4s ease;
+}
+
+.details-panel:hover {
+  background-color: rgba(29, 13, 48, 0.6);
+  border-color: rgba(170, 59, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(170, 59, 255, 0.1);
+}
+
+.panel-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #dfb76c; /* Gold title icon */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.panel-icon {
+  color: #dfb76c;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.panel-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.panel-label {
+  font-size: 10px;
+  color: #b5a8c2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.panel-val {
+  font-size: 13.5px;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Benefits Tags */
+.benefits-group {
+  margin-bottom: 24px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  border-radius: 16px;
+  padding: 20px 24px;
+  background-color: rgba(13, 2, 26, 0.45);
+  transition: all 0.4s ease;
+}
+
+.benefits-group:hover {
+  background-color: rgba(29, 13, 48, 0.6);
+  border-color: rgba(170, 59, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(170, 59, 255, 0.1);
+}
+
+.benefits-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #dfb76c;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.benefits-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.benefit-tag {
+  background-color: rgba(170, 59, 255, 0.08); /* Glowing amethyst background */
+  color: #d19eff;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border: 1px solid rgba(170, 59, 255, 0.25);
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+.benefit-tag:hover {
+  background-color: #aa3bff;
+  color: #ffffff;
+  border-color: #aa3bff;
+  box-shadow: 0 4px 12px rgba(170, 59, 255, 0.4);
+}
+
+/* Culinary Usage */
+.usage-panel {
+  margin-bottom: 35px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  border-radius: 16px;
+  padding: 20px 24px;
+  background-color: rgba(13, 2, 26, 0.45);
+  transition: all 0.4s ease;
+}
+
+.usage-panel:hover {
+  background-color: rgba(29, 13, 48, 0.6);
+  border-color: rgba(170, 59, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(170, 59, 255, 0.1);
+}
+
+.usage-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #dfb76c;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.usage-text {
+  font-size: 14px;
+  color: #b5a8c2;
+  line-height: 1.7;
+}
+
+/* WhatsApp Shimmer Button Styling */
+.product-inquire-section {
+  display: flex;
+}
+
+.inquire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 14px 28px;
+  width: 100%;
+}
+
+.luxury-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #aa3bff 0%, #350a5e 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(170, 59, 255, 0.35);
+  border-radius: 50px;
+  transition: all 0.4s ease !important;
+}
+
+.luxury-shimmer-btn:hover {
+  box-shadow: 0 10px 30px rgba(170, 59, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.shimmer-sweep {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: sweep 4s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes sweep {
+  0% {
+    left: -100%;
+  }
+  30% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Footer style */
+.products-footer {
+  margin-top: auto;
+  padding: 40px 0;
+  border-top: 1px solid rgba(197, 160, 89, 0.15);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #b5a8c2;
+}
+
+/* Responsive queries */
+@media (max-width: 1024px) {
+  .product-detail-card.card-even,
+  .product-detail-card.card-odd {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-detail-card.card-odd .product-visual-wrapper {
+    grid-column: 1;
+    order: 0;
+  }
+
+  .product-detail-card.card-odd .product-detail-content {
+    grid-column: 1;
+    grid-row: auto;
+    order: 0;
+  }
+
+  .product-visual-wrapper {
+    min-height: 350px;
+    max-height: 450px;
+    padding: 30px;
+    border-right: none;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  }
+  
+  .product-detail-card.card-odd .product-visual-wrapper {
+    border-left: none;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  }
+
+  .product-visual {
+    max-height: 380px;
+  }
+
+  .product-detail-content {
+    padding: 35px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 42px;
+  }
+  
+  .products-hero {
+    padding: 60px 0 30px;
+  }
+  
+  .panel-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .header-inner {
+    padding: 0 20px;
+  }
+}

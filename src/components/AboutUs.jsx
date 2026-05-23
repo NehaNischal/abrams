@@ -7,7 +7,7 @@ import cardamomImg from '../assets/cardamom.png';
 import blackPepperImg from '../assets/black_pepper.png';
 import coffeeImg from '../assets/coffee.png';
 import cloveImg from '../assets/clove.png';
-import gingerImg from '../assets/ginger.png';
+import gingerImg from '../assets/ginger_powder.png';
 import nutmegImg from '../assets/nutmeg.png';
 import aboutUsImg from '../assets/about_us.png';
 

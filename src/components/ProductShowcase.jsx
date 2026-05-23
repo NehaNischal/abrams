@@ -2,12 +2,11 @@ import { motion } from 'framer-motion';
 import { Leaf, Award, Zap } from 'lucide-react';
 import './ProductShowcase.css';
 
-import cardamomImg from '../assets/cardamom.png';
-import blackPepperImg from '../assets/black_pepper.png';
-import coffeeImg from '../assets/coffee.png';
-import cloveImg from '../assets/clove.png';
-import gingerPowderImg from '../assets/ginger_powder.png';
-import nutmegImg from '../assets/nutmeg.png';
+import cardamomImg from '../assets/cardamom.jpeg';
+import blackPepperImg from '../assets/black_pepper.jpeg';
+import coffeeImg from '../assets/coffee.jpeg';
+import cloveImg from '../assets/clove.jpeg';
+import nutmegImg from '../assets/nutmeg.jpeg';
 
 const products = [
   {
@@ -43,14 +42,6 @@ const products = [
     features: ['High Purity', 'Sustainable', 'Aromatic'],
     tags: ['Curries', 'Mulled Wine', 'Spice Blends'],
     reversed: true
-  },
-  {
-    id: 'ginger',
-    title: 'Premium Ginger Powder',
-    description: 'Aromatic, spicy, and warming. Our premium ginger powder is ground from select sun-dried ginger roots for a concentrated, zesty heat.',
-    image: gingerPowderImg,
-    features: ['Sun Dried', 'Zesty Heat', '100% Pure'],
-    tags: ['Baking', 'Teas & Chai', 'Spice Blends']
   },
   {
     id: 'nutmeg',

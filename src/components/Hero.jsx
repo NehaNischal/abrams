@@ -5,7 +5,6 @@ import './Hero.css';
 // Import actual product PNG assets
 import cloveImg from '../assets/clove.png';
 import pepperImg from '../assets/black_pepper.png';
-import gingerImg from '../assets/ginger.png';
 import coffeeImg from '../assets/coffee.png';
 
 const Hero = ({ onNavigate }) => {
@@ -48,13 +47,10 @@ const Hero = ({ onNavigate }) => {
     const pepper = new Image();
     pepper.src = pepperImg;
 
-    const ginger = new Image();
-    ginger.src = gingerImg;
-
     const coffee = new Image();
     coffee.src = coffeeImg;
 
-    const spiceImages = [clove, pepper, ginger, coffee];
+    const spiceImages = [clove, pepper, coffee];
 
     // Small interactive gold/olive spice particles
     class Particle {

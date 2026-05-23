@@ -6,7 +6,6 @@ import cardamomImg from '../assets/plantation_cardamom.png';
 import pepperImg from '../assets/plantation_pepper.png';
 import clovesImg from '../assets/plantation_cloves.png';
 import nutmegImg from '../assets/plantation_nutmeg.png';
-import gingerImg from '../assets/plantation_ginger.png';
 import './PlantationPage.css';
 
 const PlantationPage = ({ onBack }) => {
@@ -55,16 +54,6 @@ const PlantationPage = ({ onBack }) => {
     },
     {
       id: 5,
-      image: gingerImg,
-      title: "Sunny Ginger & Turmeric Valleys",
-      location: "Terraced Lower Foothills, Idukki",
-      elevation: "500m - 750m",
-      soil: "Sandy alluvial river loam",
-      sunlight: "Direct day-long tropical sunlight",
-      description: "Grown in well-aerated terraced soil beds, our premium ginger roots thrive under full tropical sun. The alluvial soil keeps the rhizomes large, healthy, and highly aromatic. Once harvested, they are naturally sun-dried and slowly ground into our pure, fiery ginger powder."
-    },
-    {
-      id: 6,
       image: nutmegImg,
       title: "Centuries-Old Nutmeg Groves",
       location: "Humid Alluvial Valleys, Idukki",
@@ -146,7 +135,7 @@ const PlantationPage = ({ onBack }) => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
                 className={`estate-card ${index % 2 === 1 ? 'reverse' : ''}`}
               >
-                {/* Image Section */}
+                {/* Image Section - overlay button completely removed */}
                 <div className="estate-image-wrapper">
                   <motion.div 
                     className="estate-image-box"
@@ -154,9 +143,6 @@ const PlantationPage = ({ onBack }) => {
                     onClick={() => setActiveImage(estate)}
                   >
                     <img src={estate.image} alt={estate.title} className="estate-image" />
-                    <div className="estate-image-overlay">
-                      <span>Click to view landscape</span>
-                    </div>
                   </motion.div>
                 </div>
 

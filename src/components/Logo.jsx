@@ -1,12 +1,12 @@
 import React from 'react';
 import logoImg from '../assets/logo.png';
 
-const Logo = ({ className }) => (
+const Logo = ({ className, style }) => (
   <img 
     src={logoImg} 
     alt="Abrams Logo" 
     className={className} 
-    style={{ height: '75px', objectFit: 'contain', display: 'block' }} 
+    style={{ height: 'var(--logo-height, 110px)', objectFit: 'contain', display: 'block', ...style }} 
   />
 );
 

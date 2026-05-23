@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Logo from './Logo';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -43,7 +43,15 @@ const Navbar = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              <a href={`#${item.toLowerCase().replace(' ', '-')}`}>
+              <a 
+                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                onClick={(e) => {
+                  if (item === 'Products') {
+                    e.preventDefault();
+                    if (onNavigate) onNavigate('products-page');
+                  }
+                }}
+              >
                 {item}
               </a>
             </motion.li>

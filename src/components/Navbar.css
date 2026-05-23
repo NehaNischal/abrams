@@ -30,6 +30,15 @@
   font-size: 24px;
 }
 
+.nav-logo-svg {
+  --logo-height: 110px;
+  transition: var(--transition-smooth);
+}
+
+.navbar.scrolled .nav-logo-svg {
+  --logo-height: 85px;
+}
+
 .nav-links {
   display: flex;
   gap: 48px;

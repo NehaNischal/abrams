@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -14,8 +16,12 @@
   --accent-olive: #4B5320;
   --accent-brown: #5D4037;
   --white: #FFFFFF;
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-cursive: 'Great Vibes', cursive;
+  --heading: var(--font-heading);
+  --body: var(--font-body);
+  --mono: 'Courier New', Courier, monospace;
   --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -130,14 +136,14 @@ section {
 
 h1,
 h2 {
-  font-family: var(--heading);
+  font-family: var(--font-heading);
   font-weight: 500;
   color: var(--text-h);
 }
 
 h1 {
   font-size: 56px;
-  letter-spacing: -1.68px;
+  letter-spacing: -0.5px;
   margin: 32px 0;
   @media (max-width: 1024px) {
     font-size: 36px;
@@ -147,7 +153,7 @@ h1 {
 h2 {
   font-size: 24px;
   line-height: 118%;
-  letter-spacing: -0.24px;
+  letter-spacing: -0.1px;
   margin: 0 0 8px;
   @media (max-width: 1024px) {
     font-size: 20px;

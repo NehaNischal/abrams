@@ -7,7 +7,7 @@
 
 /* Typography styles */
 .cursive-tag {
-  font-family: 'Great Vibes', 'Playfair Display', cursive;
+  font-family: var(--font-cursive);
   font-size: 32px;
   color: var(--accent-olive);
   display: block;
