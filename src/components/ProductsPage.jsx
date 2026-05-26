@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, MessageSquare, Shield, Droplet, Sparkles, MapPin } from 'lucide-react';
+import Logo from './Logo';
 import './ProductsPage.css';
 
 // Import product assets (using your saved JPEG files!)
@@ -9,6 +10,152 @@ import blackPepperImg from '../assets/black_pepper.jpeg';
 import coffeeImg from '../assets/coffee.jpeg';
 import cloveImg from '../assets/clove.jpeg';
 import nutmegImg from '../assets/nutmeg.jpeg';
+
+// Separate component for each product card to obey React's rules of hooks
+const ProductCard = ({ product, index, cardVariants, itemVariants }) => {
+  const cardRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"]
+  });
+
+  // Scale the product package image from 0.85 to 1.05 as it scrolls into view
+  const scale = useScrollLinkedScale(scrollYProgress);
+  // Also add a subtle translation y coordinate to create a parallax float effect
+  const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
+
+  return (
+    <motion.div 
+      ref={cardRef}
+      layout
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-120px" }}
+      exit={{ opacity: 0, y: -20, scale: 0.95 }}
+      className={`product-detail-card ${index % 2 === 0 ? 'card-even' : 'card-odd'}`}
+    >
+      {/* Product Poster with Gold Radial Glow backer frame */}
+      <div className="product-visual-wrapper">
+        <div className="luxury-backdrop-glow"></div>
+        <div className="luxury-frame-border"></div>
+        <motion.img 
+          src={product.image} 
+          alt={product.title} 
+          className="product-visual"
+          style={{ scale, y }}
+          whileHover={{ scale: 1.08 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <span className="product-category-tag">{product.category}</span>
+      </div>
+
+      {/* Comprehensive Details - Cascading Children */}
+      <div className="product-detail-content">
+        <motion.div variants={itemVariants} className="product-brand-group">
+          <span className="product-details-subtitle">{product.subtitle}</span>
+          <h2 className="product-details-title">{product.title}</h2>
+        </motion.div>
+
+        <motion.p variants={itemVariants} className="product-details-desc">{product.description}</motion.p>
+
+        {/* Flavor Notes Panel */}
+        <motion.div variants={itemVariants} className="details-panel tasting-panel">
+          <h4 className="panel-title">
+            <Sparkles size={16} className="panel-icon" /> 
+            <span>Tasting & Aromatic Profile</span>
+          </h4>
+          <div className="panel-grid">
+            <div className="panel-item tasting-item">
+              <span className="panel-label">Aroma</span>
+              <span className="panel-val">{product.flavorNotes.aroma}</span>
+            </div>
+            <div className="panel-item tasting-item">
+              <span className="panel-label">Flavor</span>
+              <span className="panel-val">{product.flavorNotes.flavor}</span>
+            </div>
+            <div className="panel-item tasting-item">
+              <span className="panel-label">Strength</span>
+              <span className="panel-val">{product.flavorNotes.strength}</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Origin Details */}
+        <motion.div variants={itemVariants} className="details-panel origin-panel">
+          <h4 className="panel-title">
+            <MapPin size={16} className="panel-icon" /> 
+            <span>Terroir & Origin</span>
+          </h4>
+          <div className="panel-grid">
+            <div className="panel-item origin-item">
+              <span className="panel-label">Estate</span>
+              <span className="panel-val">{product.origin.estate}</span>
+            </div>
+            <div className="panel-item origin-item">
+              <span className="panel-label">Region</span>
+              <span className="panel-val">{product.origin.region}</span>
+            </div>
+            <div className="panel-item origin-item">
+              <span className="panel-label">Elevation</span>
+              <span className="panel-val">{product.origin.elevation}</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Benefits */}
+        <motion.div variants={itemVariants} className="benefits-group">
+          <h4 className="benefits-title">
+            <Shield size={16} className="panel-icon" /> 
+            <span>Health Benefits</span>
+          </h4>
+          <div className="benefits-tags">
+            {product.benefits.map((b, i) => (
+              <motion.span 
+                key={i} 
+                className="benefit-tag"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ duration: 0.2 }}
+              >
+                {b}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Usage */}
+        <motion.div variants={itemVariants} className="usage-panel">
+          <h4 className="usage-title">
+            <Droplet size={16} className="panel-icon" /> 
+            <span>Recommended Culinary Usage</span>
+          </h4>
+          <p className="usage-text">{product.usage}</p>
+        </motion.div>
+
+        {/* Direct Inquiry Action */}
+        <motion.div variants={itemVariants} className="product-inquire-section">
+          <motion.a 
+            href="https://wa.me/911234567890" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn btn-primary inquire-btn luxury-shimmer-btn"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <MessageSquare size={16} />
+            <span>Inquire about {product.title}</span>
+            <span className="shimmer-sweep"></span>
+          </motion.a>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Custom helper hook to avoid calling hooks inside map loops
+const useScrollLinkedScale = (scrollYProgress) => {
+  return useTransform(scrollYProgress, [0, 1], [0.85, 1.05]);
+};
 
 const ProductsPage = ({ onBack }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -126,37 +273,43 @@ const ProductsPage = ({ onBack }) => {
     ? productsList 
     : productsList.filter(p => p.category === selectedCategory);
 
-  // Luxury Stagger Animation Variants
+  // Luxury Organic Spring Entrance Animation Variants
   const cardVariants = {
-    hidden: { opacity: 0, y: 70 },
+    hidden: { opacity: 0, scale: 0.82, y: 100, filter: "blur(8px)" },
     visible: {
       opacity: 1,
+      scale: 1,
       y: 0,
+      filter: "blur(0px)",
       transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-        staggerChildren: 0.08,
-        delayChildren: 0.15
+        type: "spring",
+        stiffness: 45,
+        damping: 14,
+        staggerChildren: 0.12,
+        delayChildren: 0.25
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { opacity: 0, y: 15, filter: "blur(4px)" },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
     <div className="products-page">
-      {/* Drifting Ambient Purple & Gold Particles */}
-      <div className="ambient-particle particle-1"></div>
-      <div className="ambient-particle particle-2"></div>
-      <div className="ambient-particle particle-3"></div>
-      <div className="ambient-particle particle-4"></div>
+      {/* Drifting Ambient Purple & Gold Particles (Wrapped in clipping container to prevent page height overflow) */}
+      <div className="ambient-particles-wrapper">
+        <div className="ambient-particle particle-1"></div>
+        <div className="ambient-particle particle-2"></div>
+        <div className="ambient-particle particle-3"></div>
+        <div className="ambient-particle particle-4"></div>
+      </div>
 
       {/* Premium Products Header */}
       <header className="products-header">
@@ -173,7 +326,9 @@ const ProductsPage = ({ onBack }) => {
             <span>Back to Home</span>
           </motion.button>
           
-          <div className="brand-badge">ABRAMS COLLECTION</div>
+          <div className="nav-logo" style={{ cursor: 'pointer' }} onClick={onBack}>
+            <Logo className="nav-logo-svg" style={{ '--logo-height': '140px', filter: 'brightness(0) invert(1)' }} />
+          </div>
         </div>
       </header>
 
@@ -204,26 +359,6 @@ const ProductsPage = ({ onBack }) => {
           >
             Explore nature's finest treasures. Sourced sustainably from the fertile valleys and mist-shrouded peaks of Idukki, Kerala.
           </motion.p>
-
-          {/* Filtering Tabs with Smooth Sliding morph background */}
-          <div className="filter-tabs">
-            {['all', 'spices', 'coffee'].map(cat => (
-              <button 
-                key={cat} 
-                className={`tab-btn ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                {selectedCategory === cat && (
-                  <motion.div 
-                    layoutId="activeTabIndicator" 
-                    className="active-tab-bg"
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
-                )}
-                <span className="tab-text">{cat.charAt(0).toUpperCase() + cat.slice(1)}</span>
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -233,129 +368,13 @@ const ProductsPage = ({ onBack }) => {
           <motion.div layout className="products-detail-grid">
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((product, index) => (
-                <motion.div 
+                <ProductCard 
                   key={product.id}
-                  layout
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-120px" }}
-                  exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                  className={`product-detail-card ${index % 2 === 0 ? 'card-even' : 'card-odd'}`}
-                >
-                  {/* Product Poster with Gold Radial Glow backer frame */}
-                  <motion.div variants={itemVariants} className="product-visual-wrapper">
-                    <div className="luxury-backdrop-glow"></div>
-                    <div className="luxury-frame-border"></div>
-                    <motion.img 
-                      src={product.image} 
-                      alt={product.title} 
-                      className="product-visual"
-                      whileHover={{ scale: 1.04 }}
-                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    />
-                    <span className="product-category-tag">{product.category}</span>
-                  </motion.div>
-
-                  {/* Comprehensive Details - Cascading Children */}
-                  <div className="product-detail-content">
-                    <motion.div variants={itemVariants} className="product-brand-group">
-                      <span className="product-details-subtitle">{product.subtitle}</span>
-                      <h2 className="product-details-title">{product.title}</h2>
-                    </motion.div>
-
-                    <motion.p variants={itemVariants} className="product-details-desc">{product.description}</motion.p>
-
-                    {/* Flavor Notes Panel */}
-                    <motion.div variants={itemVariants} className="details-panel tasting-panel">
-                      <h4 className="panel-title">
-                        <Sparkles size={16} className="panel-icon" /> 
-                        <span>Tasting & Aromatic Profile</span>
-                      </h4>
-                      <div className="panel-grid">
-                        <div className="panel-item tasting-item">
-                          <span className="panel-label">Aroma</span>
-                          <span className="panel-val">{product.flavorNotes.aroma}</span>
-                        </div>
-                        <div className="panel-item tasting-item">
-                          <span className="panel-label">Flavor</span>
-                          <span className="panel-val">{product.flavorNotes.flavor}</span>
-                        </div>
-                        <div className="panel-item tasting-item">
-                          <span className="panel-label">Strength</span>
-                          <span className="panel-val">{product.flavorNotes.strength}</span>
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* Origin Details */}
-                    <motion.div variants={itemVariants} className="details-panel origin-panel">
-                      <h4 className="panel-title">
-                        <MapPin size={16} className="panel-icon" /> 
-                        <span>Terroir & Origin</span>
-                      </h4>
-                      <div className="panel-grid">
-                        <div className="panel-item origin-item">
-                          <span className="panel-label">Estate</span>
-                          <span className="panel-val">{product.origin.estate}</span>
-                        </div>
-                        <div className="panel-item origin-item">
-                          <span className="panel-label">Region</span>
-                          <span className="panel-val">{product.origin.region}</span>
-                        </div>
-                        <div className="panel-item origin-item">
-                          <span className="panel-label">Elevation</span>
-                          <span className="panel-val">{product.origin.elevation}</span>
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* Benefits */}
-                    <motion.div variants={itemVariants} className="benefits-group">
-                      <h4 className="benefits-title">
-                        <Shield size={16} className="panel-icon" /> 
-                        <span>Health Benefits</span>
-                      </h4>
-                      <div className="benefits-tags">
-                        {product.benefits.map((b, i) => (
-                          <motion.span 
-                            key={i} 
-                            className="benefit-tag"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            {b}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </motion.div>
-
-                    {/* Usage */}
-                    <motion.div variants={itemVariants} className="usage-panel">
-                      <h4 className="usage-title">
-                        <Droplet size={16} className="panel-icon" /> 
-                        <span>Recommended Culinary Usage</span>
-                      </h4>
-                      <p className="usage-text">{product.usage}</p>
-                    </motion.div>
-
-                    {/* Direct Inquiry Action */}
-                    <motion.div variants={itemVariants} className="product-inquire-section">
-                      <motion.a 
-                        href="https://wa.me/911234567890" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="btn btn-primary inquire-btn luxury-shimmer-btn"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <MessageSquare size={16} />
-                        <span>Inquire about {product.title}</span>
-                        <span className="shimmer-sweep"></span>
-                      </motion.a>
-                    </motion.div>
-                  </div>
-                </motion.div>
+                  product={product}
+                  index={index}
+                  cardVariants={cardVariants}
+                  itemVariants={itemVariants}
+                />
               ))}
             </AnimatePresence>
           </motion.div>

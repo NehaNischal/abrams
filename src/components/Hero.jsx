@@ -7,8 +7,45 @@ import cloveImg from '../assets/clove.png';
 import pepperImg from '../assets/black_pepper.png';
 import coffeeImg from '../assets/coffee.png';
 
-const Hero = ({ onNavigate }) => {
+const Hero = ({ onNavigate, isLoaded = true }) => {
   const canvasRef = useRef(null);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.16,
+        delayChildren: isLoaded ? 0.75 : 0.1
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 35 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  const descVariants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  const btnsVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -237,24 +274,14 @@ const Hero = ({ onNavigate }) => {
       
       <div className="container hero-container">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isLoaded ? "visible" : "hidden"}
           className="hero-content"
         >
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="hero-subtitle"
-          >
-            ESTABLISHED IN PURITY
-          </motion.span>
           
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1 }}
+            variants={titleVariants}
             className="hero-title"
           >
             Nature’s Finest, <br />
@@ -262,9 +289,7 @@ const Hero = ({ onNavigate }) => {
           </motion.h1>
           
           <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            variants={descVariants}
             className="hero-description"
           >
             Experience the luxury of premium, organic spices and coffee sourced 
@@ -273,9 +298,7 @@ const Hero = ({ onNavigate }) => {
           </motion.p>
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            variants={btnsVariants}
             className="hero-btns"
           >
             <a href="#collection" className="btn btn-outline">Shop Collection</a>

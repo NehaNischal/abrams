@@ -5,6 +5,57 @@
   overflow: hidden;
 }
 
+.about-us-page.standalone {
+  padding-top: 180px;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Ambient Floating Particles */
+.about-us-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 1;
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+}
+
+.particle-x {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(45, 27, 78, 0.12) 0%, rgba(45, 27, 78, 0) 70%);
+  top: 15%;
+  left: -5%;
+}
+
+.particle-y {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(75, 83, 32, 0.12) 0%, rgba(75, 83, 32, 0) 70%);
+  bottom: 25%;
+  right: -8%;
+}
+
+/* Header Navigation */
+.about-us-header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(248, 243, 236, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(45, 27, 78, 0.05);
+  padding: 15px 0;
+}
+
+.about-us-body-container {
+  position: relative;
+  z-index: 2;
+}
+
 /* Typography styles */
 .cursive-tag {
   font-family: var(--font-cursive);
@@ -218,30 +269,54 @@
   font-weight: 500;
 }
 
+/* Luxury Everyday Spices Avatars */
+.luxury-img-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(45, 27, 78, 0.1);
+  border: 2px solid var(--white);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-icon-box:hover .luxury-img-wrapper {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(45, 27, 78, 0.2);
+  border-color: var(--accent-olive);
+}
+
+.luxury-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Footer Branding */
+.about-us-footer {
+  padding: 40px 0;
+  background-color: #2D1B4E;
+  color: rgba(248, 243, 236, 0.6);
+  font-size: 14px;
+  border-top: 1px solid rgba(248, 243, 236, 0.1);
+  position: relative;
+  z-index: 2;
+  margin-top: 60px;
+}
+
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .about-header, .everyday-luxury {
-    flex-direction: column;
-    gap: 40px;
+  .about-header-image {
+    padding-left: 30px;
   }
   
-  .about-header-content {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .about-header-content h2, .about-header-content p, .cursive-tag {
-    text-align: center;
-  }
-
-  .about-header-image {
-    padding-left: 0;
-    width: 100%;
+  .about-main-title {
+    font-size: 40px;
   }
 
   .about-main-img {
-    height: 380px;
+    height: 420px;
   }
   
   .philosophy-grid {
@@ -254,11 +329,61 @@
 }
 
 @media (max-width: 768px) {
+  .about-header, .everyday-luxury {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .about-header-content {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about-header-content h2, .cursive-tag {
+    text-align: center;
+  }
+
+  .about-desc p {
+    text-align: center;
+  }
+
+  .about-header-image {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .about-main-img {
+    height: 340px;
+  }
+  
+  .philosophy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .luxury-icons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .everyday-luxury {
+    padding: 30px;
+  }
+
+  .luxury-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
   .philosophy-grid {
     grid-template-columns: 1fr;
   }
 
+  .luxury-icons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
   .about-main-img {
-    height: 300px;
+    height: 280px;
   }
 }

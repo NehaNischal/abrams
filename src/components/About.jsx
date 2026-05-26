@@ -6,7 +6,7 @@ import dairyBg from '../assets/dairy_bg.jpg';
 import dairyCardBg from '../assets/dairy_card_bg.png';
 import './About.css';
 
-const Categories = () => {
+const Categories = ({ onNavigate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -26,7 +26,13 @@ const Categories = () => {
               <span className="cat-subtitle">THE COLLECTION</span>
               <h2 className="cat-title">Premium Spices</h2>
               <p className="cat-desc">Handpicked from the finest plantations across the world.</p>
-              <a href="#products" className="btn btn-outline-white">Explore Collection</a>
+              <button
+                className="btn btn-outline-white"
+                style={{ background: 'transparent', cursor: 'pointer' }}
+                onClick={(e) => { e.stopPropagation(); if (onNavigate) onNavigate('products-page'); }}
+              >
+                Explore Collection
+              </button>
             </div>
           </motion.div>
  

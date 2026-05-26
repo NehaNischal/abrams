@@ -6,6 +6,7 @@ import cardamomImg from '../assets/plantation_cardamom.png';
 import pepperImg from '../assets/plantation_pepper.png';
 import clovesImg from '../assets/plantation_cloves.png';
 import nutmegImg from '../assets/plantation_nutmeg.png';
+import Logo from './Logo';
 import './PlantationPage.css';
 
 const PlantationPage = ({ onBack }) => {
@@ -84,9 +85,11 @@ const PlantationPage = ({ onBack }) => {
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="brand-badge"
+            className="nav-logo"
+            style={{ cursor: 'pointer' }}
+            onClick={onBack}
           >
-            ABRAMS SOURCE
+            <Logo className="nav-logo-svg" style={{ '--logo-height': '140px' }} />
           </motion.div>
         </div>
       </header>

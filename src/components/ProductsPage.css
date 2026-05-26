@@ -9,6 +9,17 @@
   overflow-x: hidden;
 }
 
+.ambient-particles-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Ambient Drifting Particles - Optimized with hardware-accelerated static gradients (no GPU filter: blur penalty) */
 .ambient-particle {
   position: absolute;
@@ -73,8 +84,7 @@
 
 /* Header style for dark theme - solid background for zero scrolling repaints */
 .products-header {
-  padding: 30px 0;
-  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  padding: 5px 0;
   background-color: #0b0112; /* Solid royal dark cover, zero lag */
   position: sticky;
   top: 0;
@@ -117,12 +127,14 @@
 
 /* Hero Section */
 .products-hero {
-  padding: 80px 0 40px;
+  padding: 20px 0 40px;
 }
 
 .cursive-tag {
-  font-family: var(--font-cursive);
-  font-size: 36px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 400;
   color: #dfb76c;
   display: block;
   margin-bottom: 8px;
@@ -130,18 +142,19 @@
 }
 
 .page-title {
-  font-size: 64px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 58px;
   color: #ffffff;
   margin-bottom: 16px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
 .page-title span {
   font-style: italic;
-  font-family: var(--font-heading);
+  font-family: 'Outfit', sans-serif;
   color: #dfb76c;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .page-subtitle-text {
@@ -229,7 +242,12 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(197, 160, 89, 0.25); /* Elegant gold card frame */
   position: relative;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease, border-color 0.8s ease;
+  /* New extremely smooth 3D-elastic state transitions */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .product-detail-card.card-even {
@@ -250,9 +268,9 @@
 }
 
 .product-detail-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 80px rgba(170, 59, 255, 0.25); /* Glowing violet box shadow */
-  border-color: rgba(170, 59, 255, 0.65); /* Violet-bright frame transition */
+  transform: perspective(1200px) rotateX(2deg) rotateY(-1deg) translateY(-12px) scale(1.02);
+  box-shadow: 0 40px 90px rgba(170, 59, 255, 0.4), 0 0 40px rgba(223, 183, 108, 0.15); /* Combined violet & gold glow */
+  border-color: #dfb76c; /* Polished sand-gold border highlight */
 }
 
 /* Luxury visual image wrapper with dark purple radial gradient backing */
@@ -276,11 +294,11 @@
 
 .luxury-backdrop-glow {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(170, 59, 255, 0.22) 0%, rgba(170, 59, 255, 0) 70%);
-  filter: blur(25px);
+  /* Smooth natural gradient fade that doesn't require expensive filter repaints */
+  background: radial-gradient(circle, rgba(170, 59, 255, 0.25) 0%, rgba(170, 59, 255, 0.08) 50%, rgba(170, 59, 255, 0) 75%);
   z-index: 1;
   pointer-events: none;
 }
@@ -304,20 +322,22 @@
   max-height: 440px;
   object-fit: contain; /* Complete packaging visible */
   z-index: 3;
-  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  will-change: transform, filter;
+  backface-visibility: hidden;
 }
 
 .product-detail-card:hover .product-visual {
-  transform: translateY(-8px) scale(1.04);
-  filter: drop-shadow(0 25px 45px rgba(170, 59, 255, 0.4)); /* Deep glowing violet package shadow */
+  transform: translateY(-12px) rotate(-2deg) scale(1.06);
+  filter: drop-shadow(0 30px 60px rgba(170, 59, 255, 0.5)); /* Deep glowing violet package shadow */
 }
 
 .product-category-tag {
   position: absolute;
   top: 30px;
   left: 30px;
-  background-color: rgba(170, 59, 255, 0.9); /* Vibrant Amethyst Violet */
+  background-color: #a333ff; /* Vibrant solid purple, zero blend repaint cost */
   color: #ffffff;
   padding: 6px 16px;
   border-radius: 20px;
@@ -325,9 +345,8 @@
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  backdrop-filter: blur(5px);
   z-index: 4;
-  box-shadow: 0 4px 10px rgba(170, 59, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(170, 59, 255, 0.35);
 }
 
 /* Card Content Details */
@@ -344,8 +363,8 @@
 }
 
 .product-details-subtitle {
-  font-size: 11px;
-  letter-spacing: 3px;
+  font-size: 12px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #dfb76c; /* Polished sand-gold for label */
   font-weight: 700;
@@ -354,15 +373,16 @@
 }
 
 .product-details-title {
-  font-size: 40px;
-  font-family: var(--font-heading);
+  font-family: 'Outfit', sans-serif;
+  font-size: 36px;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .product-details-desc {
-  font-size: 15px;
+  font-size: 16px;
   color: #b5a8c2; /* Lavender grey */
   line-height: 1.8;
   margin-bottom: 30px;
@@ -386,7 +406,8 @@
 }
 
 .panel-title {
-  font-size: 13.5px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
   font-weight: 700;
   color: #dfb76c; /* Gold title icon */
   display: flex;
@@ -414,7 +435,7 @@
 }
 
 .panel-label {
-  font-size: 10px;
+  font-size: 11px;
   color: #b5a8c2;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -422,7 +443,7 @@
 }
 
 .panel-val {
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: #ffffff;
   font-weight: 600;
   line-height: 1.4;
@@ -446,7 +467,8 @@
 }
 
 .benefits-title {
-  font-size: 13.5px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
   font-weight: 700;
   color: #dfb76c;
   display: flex;
@@ -468,7 +490,7 @@
   color: #d19eff;
   padding: 8px 16px;
   border-radius: 50px;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
   border: 1px solid rgba(170, 59, 255, 0.25);
   cursor: default;
@@ -500,7 +522,8 @@
 }
 
 .usage-title {
-  font-size: 13.5px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
   font-weight: 700;
   color: #dfb76c;
   display: flex;
@@ -512,7 +535,7 @@
 }
 
 .usage-text {
-  font-size: 14px;
+  font-size: 15px;
   color: #b5a8c2;
   line-height: 1.7;
 }
@@ -527,7 +550,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 14px;
   padding: 14px 28px;
   width: 100%;
 }
