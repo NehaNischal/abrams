@@ -61,26 +61,6 @@ const GalleryPage = ({ onBack }) => {
         <div className="gallery-particle particle-3"></div>
       </div>
 
-      {/* Top Header Navigation */}
-      <header className="gallery-header-nav">
-        <div className="container header-inner">
-          <motion.button 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.05, x: -4 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onBack}
-            className="back-btn"
-          >
-            <ArrowLeft size={20} />
-            <span>Back to Home</span>
-          </motion.button>
-          
-          <div className="nav-logo" style={{ cursor: 'pointer' }} onClick={onBack}>
-            <Logo className="nav-logo-svg" style={{ '--logo-height': '140px' }} />
-          </div>
-        </div>
-      </header>
 
       {/* Main Hero Header */}
       <section className="gallery-hero">

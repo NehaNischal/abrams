@@ -10,6 +10,7 @@ import blackPepperImg from '../assets/black_pepper.jpeg';
 import coffeeImg from '../assets/coffee.jpeg';
 import cloveImg from '../assets/clove.jpeg';
 import nutmegImg from '../assets/nutmeg.jpeg';
+import gingerImg from '../assets/ginger_powder.jpeg';
 
 // Separate component for each product card to obey React's rules of hooks
 const ProductCard = ({ product, index, cardVariants, itemVariants }) => {
@@ -266,6 +267,26 @@ const ProductsPage = ({ onBack }) => {
       },
       benefits: ['Improves Sleep Quality', 'Promotes Brain Health', 'Calms Muscle Tension'],
       usage: 'Grate fresh over creamy Béchamel sauces, eggnogs, spiced coffees, and warm holiday pastries.'
+    },
+    {
+      id: 'ginger',
+      category: 'spices',
+      title: 'Premium Ginger Powder',
+      image: gingerImg,
+      subtitle: 'Sun-Dried & Stone Ground',
+      description: 'Crafted from freshly harvested, plump ginger rhizomes that are sun-dried and stone-ground to preserve their full-spectrum essential oils, giving you a warm, fiery depth in every pinch.',
+      flavorNotes: {
+        aroma: 'Warm, zesty & peppery',
+        flavor: 'Bold, spicy heat with a sweet citrus finish',
+        strength: 'Fiery & Invigorating'
+      },
+      origin: {
+        estate: 'River-Fed Lowland Farms',
+        region: 'Fertile Valleys of Idukki, Kerala',
+        elevation: '300m - 600m'
+      },
+      benefits: ['Aids Digestion & Gut Health', 'Powerful Anti-nausea', 'Supports Immune System'],
+      usage: 'Whisk into golden milk, marinades, ginger tea, curries, and baked goods for a warming depth of flavour.'
     }
   ];
 
@@ -311,38 +332,9 @@ const ProductsPage = ({ onBack }) => {
         <div className="ambient-particle particle-4"></div>
       </div>
 
-      {/* Premium Products Header */}
-      <header className="products-header">
-        <div className="container header-inner">
-          <motion.button 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.05, x: -4 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onBack}
-            className="back-btn"
-          >
-            <ArrowLeft size={20} />
-            <span>Back to Home</span>
-          </motion.button>
-          
-          <div className="nav-logo" style={{ cursor: 'pointer' }} onClick={onBack}>
-            <Logo className="nav-logo-svg" style={{ '--logo-height': '140px', filter: 'brightness(0) invert(1)' }} />
-          </div>
-        </div>
-      </header>
-
       {/* Hero Title Section */}
       <section className="products-hero">
         <div className="container text-center">
-          <motion.span 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="cursive-tag"
-          >
-            Sourced in Purity
-          </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

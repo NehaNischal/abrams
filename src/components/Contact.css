@@ -35,6 +35,24 @@
   color: var(--accent-olive);
 }
 
+.linkedin-item {
+  text-decoration: none;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.linkedin-item svg {
+  color: #0A66C2;
+}
+
+.linkedin-item:hover {
+  color: #0A66C2;
+}
+
 .contact-form-container {
   background-color: var(--white);
   padding: 60px;

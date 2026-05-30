@@ -67,32 +67,6 @@ const PlantationPage = ({ onBack }) => {
 
   return (
     <div className="plantation-page">
-      {/* Top Header Navigation */}
-      <header className="plantation-header">
-        <div className="container header-inner">
-          <motion.button 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.05, x: -4 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onBack}
-            className="back-btn"
-          >
-            <ArrowLeft size={20} />
-            <span>Back to Home</span>
-          </motion.button>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="nav-logo"
-            style={{ cursor: 'pointer' }}
-            onClick={onBack}
-          >
-            <Logo className="nav-logo-svg" style={{ '--logo-height': '140px' }} />
-          </motion.div>
-        </div>
-      </header>
 
       {/* Main Hero Header */}
       <section className="plantation-hero">

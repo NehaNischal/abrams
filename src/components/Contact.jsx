@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
@@ -79,6 +79,18 @@ const Contact = () => {
                 <MapPin size={20} />
                 <span>123 Spice Route, Kerala, India</span>
               </motion.div>
+              <motion.a
+                href="https://www.linkedin.com/company/abramsgroup/posts/?feedView=all"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="detail-item linkedin-item"
+                variants={itemVariants}
+                whileHover={{ x: 8, color: "#0A66C2" }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <Linkedin size={20} />
+                <span>Abrams Group on LinkedIn</span>
+              </motion.a>
             </motion.div>
           </motion.div>
 

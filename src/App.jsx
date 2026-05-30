@@ -57,6 +57,7 @@ function App() {
   if (currentPage === 'plantation') {
     return (
       <div className="app">
+        <Navbar onNavigate={setCurrentPage} isLoaded={true} />
         <PlantationPage onBack={() => setCurrentPage('home')} />
         
         {/* Floating WhatsApp Button */}
@@ -78,6 +79,7 @@ function App() {
   if (currentPage === 'products-page') {
     return (
       <div className="app">
+        <Navbar onNavigate={setCurrentPage} isLoaded={true} />
         <ProductsPage onBack={() => setCurrentPage('home')} />
         
         {/* Floating WhatsApp Button */}
@@ -99,6 +101,7 @@ function App() {
   if (currentPage === 'why-us-page') {
     return (
       <div className="app">
+        <Navbar onNavigate={setCurrentPage} isLoaded={true} />
         <WhyUsPage onBack={() => setCurrentPage('home')} />
         
         {/* Floating WhatsApp Button */}
@@ -120,6 +123,7 @@ function App() {
   if (currentPage === 'about-us-page') {
     return (
       <div className="app">
+        <Navbar onNavigate={setCurrentPage} isLoaded={true} />
         <AboutUs onBack={() => setCurrentPage('home')} />
         
         {/* Floating WhatsApp Button */}
@@ -141,6 +145,7 @@ function App() {
   if (currentPage === 'visuals-page') {
     return (
       <div className="app">
+        <Navbar onNavigate={setCurrentPage} isLoaded={true} />
         <GalleryPage onBack={() => setCurrentPage('home')} />
         
         {/* Floating WhatsApp Button */}

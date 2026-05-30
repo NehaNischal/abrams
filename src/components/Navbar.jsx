@@ -46,18 +46,29 @@ const Navbar = ({ onNavigate, isLoaded = true }) => {
               <a 
                 href={item === 'Visuals' ? '#gallery' : `#${item.toLowerCase().replace(' ', '-')}`}
                 onClick={(e) => {
+                  e.preventDefault();
                   if (item === 'Products') {
-                    e.preventDefault();
                     if (onNavigate) onNavigate('products-page');
                   } else if (item === 'Why Us') {
-                    e.preventDefault();
                     if (onNavigate) onNavigate('why-us-page');
                   } else if (item === 'About Us') {
-                    e.preventDefault();
                     if (onNavigate) onNavigate('about-us-page');
                   } else if (item === 'Visuals') {
-                    e.preventDefault();
                     if (onNavigate) onNavigate('visuals-page');
+                  } else if (item === 'Home') {
+                    if (onNavigate) onNavigate('home');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else if (item === 'Contact') {
+                    if (onNavigate) onNavigate('home');
+                    setTimeout(() => {
+                      const contactEl = document.getElementById('contact');
+                      if (contactEl) {
+                        const navbarHeight = 80;
+                        const elementPosition = contactEl.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                      }
+                    }, 100);
                   }
                 }}
               >
