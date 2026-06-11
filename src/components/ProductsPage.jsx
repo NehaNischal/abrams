@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, MessageSquare, Shield, Droplet, Sparkles, MapPin } from 'lucide-react';
+import { ArrowLeft, MessageSquare, Shield, Droplet, Gem, MapPin } from 'lucide-react';
 import Logo from './Logo';
 import './ProductsPage.css';
 
@@ -63,7 +63,7 @@ const ProductCard = ({ product, index, cardVariants, itemVariants }) => {
         {/* Flavor Notes Panel */}
         <motion.div variants={itemVariants} className="details-panel tasting-panel">
           <h4 className="panel-title">
-            <Sparkles size={16} className="panel-icon" /> 
+            <Gem size={16} className="panel-icon" /> 
             <span>Tasting & Aromatic Profile</span>
           </h4>
           <div className="panel-grid">
@@ -97,10 +97,12 @@ const ProductCard = ({ product, index, cardVariants, itemVariants }) => {
               <span className="panel-label">Region</span>
               <span className="panel-val">{product.origin.region}</span>
             </div>
-            <div className="panel-item origin-item">
-              <span className="panel-label">Elevation</span>
-              <span className="panel-val">{product.origin.elevation}</span>
-            </div>
+            {product.origin.elevation && (
+              <div className="panel-item origin-item">
+                <span className="panel-label">Elevation</span>
+                <span className="panel-val">{product.origin.elevation}</span>
+              </div>
+            )}
           </div>
         </motion.div>
 
@@ -136,7 +138,7 @@ const ProductCard = ({ product, index, cardVariants, itemVariants }) => {
         {/* Direct Inquiry Action */}
         <motion.div variants={itemVariants} className="product-inquire-section">
           <motion.a 
-            href="https://wa.me/911234567890" 
+            href="https://wa.me/919400093627" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="btn btn-primary inquire-btn luxury-shimmer-btn"
@@ -181,9 +183,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Highly Concentrated'
       },
       origin: {
-        estate: 'Highland Shaded Gardens',
-        region: 'Misty Peaks of Idukki, Kerala',
-        elevation: '1,600m - 1,800m'
+        estate: 'Abrams plantation',
+        region: 'Cardamom Hills, Idukki'
       },
       benefits: ['Promotes Digestion', 'Rich in Antioxidants', 'Natural Breath Freshener'],
       usage: 'Crush pods slightly to release seeds. Ideal for gourmet baking, premium chai, and infusing delicate cream desserts.'
@@ -201,32 +202,11 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Sharp & Vibrant'
       },
       origin: {
-        estate: 'Oak-Climbed Vines',
-        region: 'Biodiverse Hills of Idukki, Kerala',
-        elevation: '900m - 1,100m'
+        estate: 'Abrams plantation',
+        region: 'Black Pepper Hills, Idukki'
       },
       benefits: ['Enhances Nutrient Absorption', 'Supports Metabolism', 'Powerful Anti-inflammatory'],
       usage: 'Grind fresh over seared meats, savory soups, luxury broths, and artisanal cheese platters.'
-    },
-    {
-      id: 'coffee',
-      category: 'coffee',
-      title: 'Premium Arabica Coffee',
-      image: coffeeImg,
-      subtitle: 'High-Altitude Single Origin',
-      description: 'Exceptional single-origin Arabica beans, slowly matured under deep forest shade and roasted in small batches to highlight their natural complexity.',
-      flavorNotes: {
-        aroma: 'Rich dark chocolate & toasted hazelnut',
-        flavor: 'Smooth, balanced acidity with a sweet caramel finish',
-        strength: 'Medium Roast'
-      },
-      origin: {
-        estate: 'Volcanic Shaded Estates',
-        region: 'Mist-Covered Valleys of Idukki',
-        elevation: '1,200m - 1,450m'
-      },
-      benefits: ['Boosts Energy & Focus', 'Rich in Polyphenols', 'Clean Natural Energy'],
-      usage: 'Best brewed as espresso, pour-over, or cold brew to let the delicate chocolate and berry notes shine.'
     },
     {
       id: 'clove',
@@ -241,9 +221,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Extremely Pungent'
       },
       origin: {
-        estate: 'Sunny Hillside Orchards',
-        region: 'Sea-Wind Hillsides of Idukki',
-        elevation: '900m - 1,200m'
+        estate: 'Abrams plantation',
+        region: 'Clove Hills, Idukki'
       },
       benefits: ['Supports Oral Health', 'High in Antioxidants', 'Soothes Respiratory Comfort'],
       usage: 'Use whole in rich curries, festive mulled wines, or grind sparingly into master spice blends.'
@@ -261,9 +240,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Warm & Fragrant'
       },
       origin: {
-        estate: 'Centuries-Old Nutmeg Groves',
-        region: 'Humid Alluvial Idukki Valleys',
-        elevation: '600m - 800m'
+        estate: 'Abrams plantation',
+        region: 'Nutmeg Hills, Idukki'
       },
       benefits: ['Improves Sleep Quality', 'Promotes Brain Health', 'Calms Muscle Tension'],
       usage: 'Grate fresh over creamy Béchamel sauces, eggnogs, spiced coffees, and warm holiday pastries.'
@@ -281,9 +259,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Fiery & Invigorating'
       },
       origin: {
-        estate: 'River-Fed Lowland Farms',
-        region: 'Fertile Valleys of Idukki, Kerala',
-        elevation: '300m - 600m'
+        estate: 'Abrams plantation',
+        region: 'Ginger Hills, Idukki'
       },
       benefits: ['Aids Digestion & Gut Health', 'Powerful Anti-nausea', 'Supports Immune System'],
       usage: 'Whisk into golden milk, marinades, ginger tea, curries, and baked goods for a warming depth of flavour.'

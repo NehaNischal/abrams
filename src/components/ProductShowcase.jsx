@@ -27,14 +27,6 @@ const products = [
     reversed: true
   },
   {
-    id: 'coffee',
-    title: 'Premium Coffee',
-    description: 'Expertly roasted beans from high-altitude estates. A perfect balance of acidity and body, with notes of dark chocolate and caramel.',
-    image: coffeeImg,
-    features: ['Artisan Roast', 'Single Origin', 'Smooth Finish'],
-    tags: ['Espresso', 'Cold Brew', 'Morning Ritual']
-  },
-  {
     id: 'clove',
     title: 'Premium Clove',
     description: 'Intensely aromatic and flavorful cloves, harvested at their peak. Essential for creating rich, deep spice blends and medicinal infusions.',
@@ -66,15 +58,7 @@ const ProductShowcase = () => {
 
         {products.map((product) => (
           <div key={product.id} className={`product-section ${product.reversed ? 'reversed' : ''}`}>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="product-image-container"
-            >
-              <img src={product.image} alt={product.title} className="product-poster" />
-            </motion.div>
+
 
             <motion.div 
               initial={{ opacity: 0, y: 30 }}

@@ -284,8 +284,8 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
             variants={titleVariants}
             className="hero-title"
           >
-            Nature’s Finest, <br />
-            <span>Handpicked for You</span>
+            The Mix of <br />
+            <span>Golden Spices</span>
           </motion.h1>
           
           <motion.p 

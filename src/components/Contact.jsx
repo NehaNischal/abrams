@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin, Instagram } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
@@ -35,7 +35,7 @@ const Contact = () => {
             transition={{ type: "spring", stiffness: 60, damping: 14 }}
             className="contact-info"
           >
-            <span className="section-tag">INQUIRY</span>
+
             <h2 className="section-title">Let’s Start a <br /> Conversation.</h2>
             <p className="contact-desc">
               Interested in our premium collection or bulk exports? 
@@ -49,26 +49,28 @@ const Contact = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.div 
+              <motion.a 
+                href="mailto:abramsgroup.co@gmail.com"
                 className="detail-item" 
                 variants={itemVariants}
                 whileHover={{ x: 8, color: "var(--accent-olive)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", textDecoration: "none", color: "inherit" }}
               >
                 <Mail size={20} />
-                <span>hello@abrams.com</span>
-              </motion.div>
-              <motion.div 
+                <span>abramsgroup.co@gmail.com</span>
+              </motion.a>
+              <motion.a 
+                href="tel:+919400093627"
                 className="detail-item" 
                 variants={itemVariants}
                 whileHover={{ x: 8, color: "var(--accent-olive)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", textDecoration: "none", color: "inherit" }}
               >
                 <Phone size={20} />
-                <span>+1 (234) 567-890</span>
-              </motion.div>
+                <span>+91 94000 93627, 7907707990</span>
+              </motion.a>
               <motion.div 
                 className="detail-item" 
                 variants={itemVariants}
@@ -77,7 +79,10 @@ const Contact = () => {
                 style={{ cursor: "pointer" }}
               >
                 <MapPin size={20} />
-                <span>123 Spice Route, Kerala, India</span>
+                <span>
+                  Mavady PO, Nedumkandam <br />
+                  Idukki Kerala
+                </span>
               </motion.div>
               <motion.a
                 href="https://www.linkedin.com/company/abramsgroup/posts/?feedView=all"
@@ -90,6 +95,18 @@ const Contact = () => {
               >
                 <Linkedin size={20} />
                 <span>Abrams Group on LinkedIn</span>
+              </motion.a>
+              <motion.a
+                href="https://www.instagram.com/_abraams"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="detail-item instagram-item"
+                variants={itemVariants}
+                whileHover={{ x: 8, color: "#E1306C" }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <Instagram size={20} />
+                <span>@_ABRAAMS on Instagram</span>
               </motion.a>
             </motion.div>
           </motion.div>

@@ -24,20 +24,10 @@ const PlantationPage = ({ onBack }) => {
       description: "Deep in the cloudy high-altitude peaks of Idukki, our cardamom plants are sheltered under massive indigenous shade trees. The cool climate, morning mist, and heavy organic forest mulch allow the pods to develop their intense green color, bold size, and highly concentrated essential oils."
     },
     {
-      id: 2,
-      image: coffeeImg,
-      title: "Volcanic Arabica Coffee Estates",
-      location: "Deep Valleys of Western Ghats, Idukki",
-      elevation: "1,200m - 1,450m",
-      soil: "Mineral-rich volcanic clay",
-      sunlight: "Warm morning sun & misty shade",
-      description: "Cultivated on fertile mountain slopes, our handpicked Arabica coffee cherries ripen slowly under natural forest shade. The rich volcanic soil and slow maturation process enrich the beans, creating a smooth flavor profile with subtle notes of chocolate and berries."
-    },
-    {
       id: 3,
       image: pepperImg,
       title: "High-Climbing Black Pepper Vines",
-      location: "Bio-diverse Cardamom Hills, Idukki",
+      location: "Bio-diverse Black Pepper Hills, Idukki",
       elevation: "800m - 1,100m",
       soil: "Well-drained red laterite soil",
       sunlight: "Bright tropical sun & ambient humidity",

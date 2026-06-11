@@ -17,6 +17,8 @@ import platCardamomImg from '../assets/plantation_cardamom.png';
 import platPepperImg from '../assets/plantation_pepper.png';
 import platClovesImg from '../assets/plantation_cloves.png';
 import platNutmegImg from '../assets/plantation_nutmeg.png';
+import galleryImg1 from '../assets/gallery.jpeg';
+import galleryImg3 from '../assets/new.jpeg';
 
 const GalleryPage = ({ onBack }) => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -27,18 +29,8 @@ const GalleryPage = ({ onBack }) => {
   }, []);
 
   const galleryItems = [
-    { id: 1, image: cardamomImg, title: "Highland Cardamom Pods", category: "spices" },
-    { id: 2, image: blackPepperImg, title: "Black Pepper Climbers", category: "spices" },
-    { id: 3, image: platCoffeeImg, title: "Misty Valley Arabica", category: "estates" },
-    { id: 4, image: coffeeImg, title: "Handpicked Coffee Cherries", category: "estates" },
-    { id: 5, image: cloveImg, title: "Crimson Flower Buds", category: "spices" },
-    { id: 6, image: nutmegImg, title: "Organic Nutmeg Split Fruit", category: "spices" },
-    { id: 7, image: platCardamomImg, title: "Highland Shaded Canopy", category: "estates" },
-    { id: 8, image: gingerImg, title: "Artisanal Ground Ginger", category: "spices" },
-    { id: 9, image: platPepperImg, title: "Silver Oak Climbing Vines", category: "estates" },
-    { id: 10, image: aboutUsImg, title: "The Abrams Family Gift Set", category: "curated" },
-    { id: 11, image: platClovesImg, title: "Mountain Slope Clove Drying", category: "estates" },
-    { id: 12, image: platNutmegImg, title: "Humid Nutmeg Valleys", category: "estates" }
+    { id: 3, image: galleryImg1, title: "Abrams Spice Box", category: "curated" },
+    { id: 5, image: galleryImg3, title: "Curated Box", category: "curated" }
   ];
 
   const filteredItems = activeCategory === 'all' 
@@ -85,27 +77,7 @@ const GalleryPage = ({ onBack }) => {
         </div>
       </section>
 
-      {/* Interactive Category Filter Menu */}
-      <section className="gallery-filter-section">
-        <div className="container text-center">
-          <div className="filter-button-group">
-            {categories.map((cat, idx) => (
-              <motion.button
-                key={cat.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.08 }}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                {cat.label}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Premium Masonry Grid Layout */}
       <section className="gallery-grid-section">

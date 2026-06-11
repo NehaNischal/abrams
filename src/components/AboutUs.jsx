@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Leaf, Star, Flame, Sprout } from 'lucide-react';
-import aboutHeroImg from '../assets/about_us.png';
+import { Leaf, BadgeCheck, Flame, Sprout } from 'lucide-react';
+import aboutImg from '../assets/about_us.png';
+
 import './AboutUs.css';
 
 const AboutUs = ({ onBack }) => {
@@ -16,7 +17,7 @@ const AboutUs = ({ onBack }) => {
       desc: "Pure products with no unnecessary additives."
     },
     {
-      icon: <Star size={44} strokeWidth={1.5} />,
+      icon: <BadgeCheck size={44} strokeWidth={1.5} />,
       title: "Handpicked Quality",
       desc: "Carefully selected for maximum freshness and flavor."
     },
@@ -70,12 +71,13 @@ const AboutUs = ({ onBack }) => {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             viewport={{ once: true }}
             className="about-header-image"
           >
-            <img src={aboutHeroImg} alt="Premium Abrams Spices" className="about-main-img" />
+            <img src={aboutImg} alt="Abrams Spice Box" className="about-main-img" />
           </motion.div>
+
         </div>
 
         {/* Philosophy Section */}

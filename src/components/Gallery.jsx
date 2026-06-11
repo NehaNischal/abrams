@@ -3,11 +3,8 @@ import { motion } from 'framer-motion';
 import './Gallery.css';
 
 const images = [
-  '/src/assets/cardamom.png',
-  '/src/assets/black_pepper.png',
-  '/src/assets/coffee.png',
-  '/src/assets/clove.png',
-  '/src/assets/nutmeg.png'
+  '/src/assets/gallery.jpeg',
+  '/src/assets/new.jpeg'
 ];
 
 const Gallery = () => {

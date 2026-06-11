@@ -18,22 +18,17 @@
 }
 
 .product-section {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   align-items: center;
+  text-align: center;
   margin: 0 auto 100px;
-  max-width: 1150px;
+  max-width: 800px;
   width: 100%;
 }
 
-.product-section.reversed {
-  grid-template-columns: 1.2fr 1fr;
-}
 
-.product-section.reversed .product-image-container {
-  order: 2;
-}
 
 .product-image-container {
   position: relative;
@@ -79,6 +74,7 @@
 .product-features-mini {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
   margin-bottom: 40px;
 }
@@ -95,6 +91,7 @@
 .usage-tags {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 48px;
   flex-wrap: wrap;

@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
             <div className="social-links">
               <a href="#"><Facebook size={20} /></a>
-              <a href="#"><Instagram size={20} /></a>
+              <a href="https://www.instagram.com/_abraams" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
               <a href="#"><Twitter size={20} /></a>
               <a href="#"><Linkedin size={20} /></a>
             </div>
@@ -46,9 +46,12 @@ const Footer = () => {
             <div className="footer-col">
               <h4>Contact</h4>
               <ul>
-                <li>Kerala, India</li>
-                <li>+1 (234) 567-890</li>
-                <li>hello@abrams.com</li>
+                <li>
+                  Mavady PO, Nedumkandam <br />
+                  Idukki Kerala
+                </li>
+                <li><a href="tel:+919400093627" style={{ textDecoration: 'none', color: 'inherit' }}>+91 94000 93627, 7907707990</a></li>
+                <li><a href="mailto:abramsgroup.co@gmail.com" style={{ textDecoration: 'none', color: 'inherit' }}>abramsgroup.co@gmail.com</a></li>
               </ul>
             </div>
           </div>

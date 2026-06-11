@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Sprout, Ship, HandHeart, Wind, Package, Flame, ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import { ArrowLeft, Sprout, Ship, HandHeart, Wind, Package, Flame, ShieldCheck, Heart, Crown } from 'lucide-react';
 import Logo from './Logo';
 import './WhyUsPage.css';
 
@@ -60,7 +60,7 @@ const WhyUsPage = ({ onBack }) => {
       description: "We work side-by-side with local farming families, investing back into sustainable agriculture practices, local schools, and forest protection."
     },
     {
-      icon: <Sparkles size={28} />,
+      icon: <Crown size={28} />,
       title: "Artisanal Single-Origin",
       description: "Unlike commercial blended brands, our spices are strictly single-origin from high-elevation Idukki estates, ensuring unmatched flavor depth."
     }
@@ -202,7 +202,7 @@ const WhyUsPage = ({ onBack }) => {
             <h2>Ready to Taste the Abrams Standard?</h2>
             <p>Connect with our sourcing experts for direct-from-origin commercial requests or custom blend enquiries.</p>
             <motion.a 
-              href="https://wa.me/911234567890" 
+              href="https://wa.me/919400093627" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-primary cta-btn"
