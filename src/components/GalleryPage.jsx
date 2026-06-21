@@ -4,24 +4,21 @@ import { ArrowLeft, X, Maximize2 } from 'lucide-react';
 import Logo from './Logo';
 import './GalleryPage.css';
 
-// Import all visual assets for absolute robustness in Vite bundle
-import cardamomImg from '../assets/cardamom.png';
-import blackPepperImg from '../assets/black_pepper.png';
-import coffeeImg from '../assets/coffee.png';
-import cloveImg from '../assets/clove.png';
-import nutmegImg from '../assets/nutmeg.png';
-import gingerImg from '../assets/ginger_powder.png';
-import aboutUsImg from '../assets/about_us.png';
-import platCoffeeImg from '../assets/plantation_coffee.png';
-import platCardamomImg from '../assets/plantation_cardamom.png';
-import platPepperImg from '../assets/plantation_pepper.png';
-import platClovesImg from '../assets/plantation_cloves.png';
-import platNutmegImg from '../assets/plantation_nutmeg.png';
-import galleryImg1 from '../assets/gallery.jpeg';
-import galleryImg3 from '../assets/new.jpeg';
+// Import visual assets for the gallery from the gallery directory
+import cardamomFlowerImg from '../../gallery/cardamom flower.png';
+import cloveBlackImg from '../../gallery/clove black.png';
+import coffeeBeansHandImg from '../../gallery/coffee beans hand.png';
+import coffeePlantImg from '../../gallery/coffee palnt.png';
+import driedCardamomImg from '../../gallery/dried cardamom.png';
+import driedCoffeebeansImg from '../../gallery/dried coffeebeans.png';
+import nutmegFruitImg from '../../gallery/nutmeg fruit.png';
+import pepperGreemImg from '../../gallery/pepper greem.png';
+import turmericPowderImg from '../../gallery/turmeric powder.png';
+import turmericImg from '../../gallery/turmeric.png';
+import whatsappImg1 from '../../gallery/WhatsApp Image 2026-06-01 at 7.20.47 PM (1).jpeg';
+import whatsappImg2 from '../../gallery/WhatsApp Image 2026-06-01 at 7.20.47 PM.jpeg';
 
 const GalleryPage = ({ onBack }) => {
-  const [activeCategory, setActiveCategory] = useState('all');
   const [lightboxImage, setLightboxImage] = useState(null);
 
   useEffect(() => {
@@ -29,19 +26,18 @@ const GalleryPage = ({ onBack }) => {
   }, []);
 
   const galleryItems = [
-    { id: 3, image: galleryImg1, title: "Abrams Spice Box", category: "curated" },
-    { id: 5, image: galleryImg3, title: "Curated Box", category: "curated" }
-  ];
-
-  const filteredItems = activeCategory === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeCategory);
-
-  const categories = [
-    { id: 'all', label: 'All Frames' },
-    { id: 'spices', label: 'Artisanal Spices' },
-    { id: 'estates', label: 'Our Estates' },
-    { id: 'curated', label: 'Curated Sets' }
+    { id: 1, image: cardamomFlowerImg, title: "Cardamom Flower" },
+    { id: 2, image: cloveBlackImg, title: "Black Cloves" },
+    { id: 3, image: coffeeBeansHandImg, title: "Harvesting Coffee Beans" },
+    { id: 4, image: coffeePlantImg, title: "Coffee Plant" },
+    { id: 5, image: driedCardamomImg, title: "Dried Cardamom" },
+    { id: 6, image: driedCoffeebeansImg, title: "Dried Coffee Beans" },
+    { id: 7, image: nutmegFruitImg, title: "Nutmeg Fruit" },
+    { id: 8, image: pepperGreemImg, title: "Green Pepper" },
+    { id: 9, image: turmericPowderImg, title: "Turmeric Powder" },
+    { id: 10, image: turmericImg, title: "Fresh Turmeric Roots" },
+    { id: 11, image: whatsappImg1, title: "Premium Sourcing" },
+    { id: 12, image: whatsappImg2, title: "Our Plantation" }
   ];
 
   return (
@@ -58,7 +54,7 @@ const GalleryPage = ({ onBack }) => {
       <section className="gallery-hero">
         <div className="container text-center">
 
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -66,7 +62,7 @@ const GalleryPage = ({ onBack }) => {
           >
             The Abrams <span>Gallery</span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -84,8 +80,8 @@ const GalleryPage = ({ onBack }) => {
         <div className="container">
           <motion.div layout className="gallery-masonry-grid">
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item, index) => (
-                <motion.div 
+              {galleryItems.map((item, index) => (
+                <motion.div
                   key={item.id}
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -103,7 +99,7 @@ const GalleryPage = ({ onBack }) => {
                 >
                   <img src={item.image} alt={item.title} className="gallery-img" />
                   <div className="gallery-overlay">
-                    <motion.div 
+                    <motion.div
                       className="overlay-content"
                       variants={{
                         initial: { y: 20, opacity: 0 },
@@ -114,7 +110,6 @@ const GalleryPage = ({ onBack }) => {
                     >
                       <Maximize2 size={24} className="zoom-icon" />
                       <h3>{item.title}</h3>
-                      <span>{item.category.toUpperCase()}</span>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -127,14 +122,14 @@ const GalleryPage = ({ onBack }) => {
       {/* Lightbox / Full-screen View Modal */}
       <AnimatePresence>
         {lightboxImage && (
-          <motion.div 
+          <motion.div
             className="gallery-lightbox-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxImage(null)}
           >
-            <motion.div 
+            <motion.div
               className="lightbox-wrapper"
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -147,7 +142,6 @@ const GalleryPage = ({ onBack }) => {
               <img src={lightboxImage.image} alt={lightboxImage.title} className="lightbox-image" />
               <div className="lightbox-footer-caption">
                 <h3>{lightboxImage.title}</h3>
-                <span className="caption-tag">{lightboxImage.category.toUpperCase()}</span>
               </div>
             </motion.div>
           </motion.div>

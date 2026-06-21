@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import './Gallery.css';
 
 const images = [
-  '/src/assets/gallery.jpeg',
-  '/src/assets/new.jpeg'
+  '/src/assets/plantation_nutmeg.png',
+  '/src/assets/plantation_ginger.png',
+  '/src/assets/plantation_cardamom.png',
+  '/src/assets/plantation_cloves.png'
 ];
 
 const Gallery = () => {
