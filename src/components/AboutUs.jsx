@@ -50,7 +50,6 @@ const AboutUs = ({ onBack }) => {
             viewport={{ once: true }}
             className="about-header-content"
           >
-            <span className="cursive-tag">About Us</span>
             <h2 className="about-main-title">Handpicked Excellence,<br/>Crafted by Nature</h2>
             <div className="about-desc">
               <p>
@@ -129,13 +128,6 @@ const AboutUs = ({ onBack }) => {
         </div>
 
       </div>
-
-      {/* Footer */}
-      <footer className="about-us-footer">
-        <div className="container text-center">
-          <p>© {new Date().getFullYear()} Abrams Premium Spices & Coffee. Crafted with Purity, Cultivated with Integrity.</p>
-        </div>
-      </footer>
     </section>
   );
 };

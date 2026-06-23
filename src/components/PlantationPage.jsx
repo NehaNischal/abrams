@@ -17,8 +17,7 @@ const PlantationPage = ({ onBack }) => {
       id: 1,
       image: cardamomImg,
       title: "Highland Cardamom Shaded Gardens",
-      location: "Mist-covered Peaks of Idukki, Kerala",
-      elevation: "1,600m - 1,800m",
+      location: "ABRAMS PLANTATION",
       soil: "Humus-rich forest loam",
       sunlight: "Dappled light under canopy trees",
       description: "Deep in the cloudy high-altitude peaks of Idukki, our cardamom plants are sheltered under massive indigenous shade trees. The cool climate, morning mist, and heavy organic forest mulch allow the pods to develop their intense green color, bold size, and highly concentrated essential oils."
@@ -27,8 +26,7 @@ const PlantationPage = ({ onBack }) => {
       id: 3,
       image: pepperImg,
       title: "High-Climbing Black Pepper Vines",
-      location: "Bio-diverse Black Pepper Hills, Idukki",
-      elevation: "800m - 1,100m",
+      location: "ABRAMS PLANTATION",
       soil: "Well-drained red laterite soil",
       sunlight: "Bright tropical sun & ambient humidity",
       description: "Our black pepper vines are planted alongside tall silver oak and coconut trees, climbing up to twenty feet. The natural support systems and optimal high humidity foster the growth of plump pepper strings, harvested by hand to ensure hot, bold, and fully mature corns."
@@ -37,8 +35,7 @@ const PlantationPage = ({ onBack }) => {
       id: 4,
       image: clovesImg,
       title: "Evergreen Clove Tree Orchards",
-      location: "Sunlit Mountain Hillsides, Idukki",
-      elevation: "900m - 1,200m",
+      location: "ABRAMS PLANTATION",
       soil: "Deep sandy clay loam",
       sunlight: "Open sun & sea-facing wind currents",
       description: "Our cloves are harvested from mature, evergreen clove trees. The hilly slope breezes and long sunlit hours in Idukki allow the flower buds to turn a beautiful crimson-pink, indicating they are ready for careful handpicking and sun-drying to lock in sweet eugenol content."
@@ -47,8 +44,7 @@ const PlantationPage = ({ onBack }) => {
       id: 5,
       image: nutmegImg,
       title: "Centuries-Old Nutmeg Groves",
-      location: "Humid Alluvial Valleys, Idukki",
-      elevation: "600m - 800m",
+      location: "ABRAMS PLANTATION",
       soil: "Rich alluvial organic compost",
       sunlight: "Warm partial shade under canopy",
       description: "Our nutmeg groves are situated in humid valleys where the trees thrive in high rainfall. The apricot-like golden fruits ripen until they split open naturally, revealing the brilliant red lacy mace (aril) wrapped around the hard nutmeg shell—yielding two exquisite spices from a single tree."
@@ -61,14 +57,7 @@ const PlantationPage = ({ onBack }) => {
       {/* Main Hero Header */}
       <section className="plantation-hero">
         <div className="container text-center">
-          <motion.span 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="cursive-tag"
-          >
-            Sourced at the Origin
-          </motion.span>
+
           <motion.h1 
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,24 +111,17 @@ const PlantationPage = ({ onBack }) => {
                       <MapPin size={16} />
                       <span>{estate.location}</span>
                     </div>
-                    <div className="meta-item">
-                      <Compass size={16} />
-                      <span>{estate.elevation}</span>
-                    </div>
+                    {estate.elevation && (
+                      <div className="meta-item">
+                        <Compass size={16} />
+                        <span>{estate.elevation}</span>
+                      </div>
+                    )}
                   </div>
 
                   <p className="estate-desc">{estate.description}</p>
 
-                  <div className="estate-ecology">
-                    <div className="ecology-tag">
-                      <Wind size={14} />
-                      <span>{estate.soil}</span>
-                    </div>
-                    <div className="ecology-tag">
-                      <Sun size={14} />
-                      <span>{estate.sunlight}</span>
-                    </div>
-                  </div>
+
                 </div>
               </motion.div>
             ))}
@@ -147,12 +129,7 @@ const PlantationPage = ({ onBack }) => {
         </div>
       </section>
 
-      {/* Footer Branding */}
-      <footer className="plantation-footer">
-        <div className="container text-center">
-          <p>© {new Date().getFullYear()} Abrams Spices & Coffee. Crafted by Nature, Sourced Responsibly.</p>
-        </div>
-      </footer>
+
 
       {/* Lightbox / Full-screen View Modal */}
       <AnimatePresence>
@@ -177,7 +154,7 @@ const PlantationPage = ({ onBack }) => {
               <img src={activeImage.image} alt={activeImage.title} className="lightbox-img" />
               <div className="lightbox-caption">
                 <h3>{activeImage.title}</h3>
-                <p>{activeImage.location} • {activeImage.elevation}</p>
+                <p>{activeImage.location}{activeImage.elevation ? ` • ${activeImage.elevation}` : ''}</p>
               </div>
             </motion.div>
           </motion.div>

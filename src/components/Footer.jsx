@@ -20,29 +20,11 @@ const Footer = () => {
               <a href="#"><Facebook size={20} /></a>
               <a href="https://www.instagram.com/_abraams" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
               <a href="#"><Twitter size={20} /></a>
-              <a href="#"><Linkedin size={20} /></a>
+              <a href="https://www.linkedin.com/company/abramsgroup/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
             </div>
           </div>
 
           <div className="footer-links-grid">
-            <div className="footer-col">
-              <h4>Explore</h4>
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#story">Our Story</a></li>
-                <li><a href="#products">Collection</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-              </ul>
-            </div>
-            <div className="footer-col">
-              <h4>Products</h4>
-              <ul>
-                <li><a href="#products">Cardamom</a></li>
-                <li><a href="#products">Coffee</a></li>
-                <li><a href="#products">Spices</a></li>
-                <li><a href="#products">Organics</a></li>
-              </ul>
-            </div>
             <div className="footer-col">
               <h4>Contact</h4>
               <ul>
@@ -57,12 +39,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer-bottom">
-          <p>&copy; 2026 ABRAMS PREMIUM. ALL RIGHTS RESERVED.</p>
-          <div className="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-          </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="container" style={{ textAlign: 'center' }}>
+          <p>© {new Date().getFullYear()} Abrams Premium Spices & Coffee. Crafted with Purity, Cultivated with Integrity.</p>
         </div>
       </div>
     </footer>

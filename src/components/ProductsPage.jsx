@@ -183,7 +183,7 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Highly Concentrated'
       },
       origin: {
-        estate: 'Abrams plantation',
+        estate: 'Mist-covered Peaks of Idukki, Kerala',
         region: 'Cardamom Hills, Idukki'
       },
       benefits: ['Promotes Digestion', 'Rich in Antioxidants', 'Natural Breath Freshener'],
@@ -202,7 +202,7 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Sharp & Vibrant'
       },
       origin: {
-        estate: 'Abrams plantation',
+        estate: 'Bio-diverse Black Pepper Hills, Idukki',
         region: 'Black Pepper Hills, Idukki'
       },
       benefits: ['Enhances Nutrient Absorption', 'Supports Metabolism', 'Powerful Anti-inflammatory'],
@@ -221,7 +221,7 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Extremely Pungent'
       },
       origin: {
-        estate: 'Abrams plantation',
+        estate: 'Sunlit Mountain Hillsides, Idukki',
         region: 'Clove Hills, Idukki'
       },
       benefits: ['Supports Oral Health', 'High in Antioxidants', 'Soothes Respiratory Comfort'],
@@ -240,7 +240,7 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Warm & Fragrant'
       },
       origin: {
-        estate: 'Abrams plantation',
+        estate: 'Humid Alluvial Valleys, Idukki',
         region: 'Nutmeg Hills, Idukki'
       },
       benefits: ['Improves Sleep Quality', 'Promotes Brain Health', 'Calms Muscle Tension'],
@@ -259,7 +259,7 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Fiery & Invigorating'
       },
       origin: {
-        estate: 'Abrams plantation',
+        estate: 'Ginger Hills, Idukki',
         region: 'Ginger Hills, Idukki'
       },
       benefits: ['Aids Digestion & Gut Health', 'Powerful Anti-nausea', 'Supports Immune System'],
@@ -349,13 +349,6 @@ const ProductsPage = ({ onBack }) => {
           </motion.div>
         </div>
       </section>
-
-      {/* Premium Footer */}
-      <footer className="products-footer">
-        <div className="container text-center">
-          <p>© {new Date().getFullYear()} Abrams Premium Spices & Coffee. Crafted with Purity, Cultivated with Integrity.</p>
-        </div>
-      </footer>
     </div>
   );
 };

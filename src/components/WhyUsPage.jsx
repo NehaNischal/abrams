@@ -214,13 +214,6 @@ const WhyUsPage = ({ onBack }) => {
           </motion.div>
         </div>
       </section>
-
-      {/* Premium Footer */}
-      <footer className="why-us-footer">
-        <div className="container text-center">
-          <p>© {new Date().getFullYear()} Abrams Premium Spices & Coffee. Crafted with Purity, Cultivated with Integrity.</p>
-        </div>
-      </footer>
     </div>
   );
 };

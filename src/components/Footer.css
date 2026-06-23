@@ -1,6 +1,7 @@
 .footer {
   background-color: var(--white);
-  padding: 100px 0 40px;
+  padding: 100px 0 0;
+  text-align: left;
 }
 
 .footer-top {
@@ -75,23 +76,12 @@
 }
 
 .footer-bottom {
-  padding-top: 40px;
-  border-top: 1px solid var(--bg-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #999;
-}
-
-.footer-legal {
-  display: flex;
-  gap: 24px;
-}
-
-.footer-legal a:hover {
-  color: var(--text-primary);
+  background-color: #2D1B4E;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(248, 243, 236, 0.7);
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 1024px) {
