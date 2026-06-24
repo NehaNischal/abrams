@@ -5,8 +5,8 @@ import './Gallery.css';
 const images = [
   '/src/assets/plantation_nutmeg.png',
   '/src/assets/plantation_ginger.png',
-  '/src/assets/plantation_cardamom.png',
-  '/src/assets/plantation_cloves.png'
+  '/src/assets/plantation_cardamom.jpg',
+  '/src/assets/clove.png'
 ];
 
 const Gallery = () => {

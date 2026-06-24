@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
 import './Footer.css';
 
@@ -25,15 +25,24 @@ const Footer = () => {
           </div>
 
           <div className="footer-links-grid">
-            <div className="footer-col">
+            <div className="footer-col contact-highlight-col">
               <h4>Contact</h4>
-              <ul>
+              <ul className="footer-contact-list">
                 <li>
-                  Mavady PO, Nedumkandam <br />
-                  Idukki Kerala
+                  <MapPin size={18} className="contact-icon" />
+                  <span>
+                    Mavady PO, Nedumkandam <br />
+                    Idukki Kerala
+                  </span>
                 </li>
-                <li><a href="tel:+919400093627" style={{ textDecoration: 'none', color: 'inherit' }}>+91 94000 93627, 7907707990</a></li>
-                <li><a href="mailto:abramsgroup.co@gmail.com" style={{ textDecoration: 'none', color: 'inherit' }}>abramsgroup.co@gmail.com</a></li>
+                <li>
+                  <Phone size={18} className="contact-icon" />
+                  <a href="tel:+919400093627">+91 94000 93627, 7907707990</a>
+                </li>
+                <li>
+                  <Mail size={18} className="contact-icon" />
+                  <a href="mailto:abramsgroup.co@gmail.com">abramsgroup.co@gmail.com</a>
+                </li>
               </ul>
             </div>
           </div>

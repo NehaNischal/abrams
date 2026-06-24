@@ -15,10 +15,16 @@
   max-width: 350px;
 }
 
+.footer-brand-section .nav-logo-svg {
+  --logo-height: 100px;
+  margin-bottom: -25px;
+  margin-top: -20px;
+}
+
 .footer-bio {
   font-size: 15px;
   color: var(--text-secondary);
-  margin: 24px 0 32px;
+  margin: 8px 0 32px;
   line-height: 1.6;
 }
 
@@ -74,6 +80,66 @@
   color: var(--accent-olive);
   padding-left: 5px;
 }
+
+/* Polished premium highlight style for Footer Contact block */
+.footer-col.contact-highlight-col {
+  background: rgba(75, 83, 32, 0.04); /* Subtle olive-tinted background */
+  padding: 24px 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(75, 83, 32, 0.02);
+  transition: var(--transition-smooth);
+}
+
+.footer-col.contact-highlight-col:hover {
+  background: rgba(75, 83, 32, 0.06);
+  box-shadow: 0 12px 30px rgba(75, 83, 32, 0.04);
+}
+
+.footer-col.contact-highlight-col h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-olive) !important;
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px !important;
+  margin-top: 10px;
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.footer-contact-list .contact-icon {
+  color: var(--accent-olive);
+  flex-shrink: 0;
+  margin-top: 3px;
+  transition: transform 0.3s ease;
+}
+
+.footer-contact-list li:hover .contact-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.footer-contact-list a {
+  text-decoration: none;
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.footer-contact-list a:hover {
+  color: var(--accent-olive) !important;
+  padding-left: 4px;
+}
+
 
 .footer-bottom {
   background-color: #2D1B4E;

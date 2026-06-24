@@ -1,5 +1,5 @@
 .products-page {
-  background: radial-gradient(circle at 50% 20%, #f5ead6 0%, #ede0c4 60%, #e8d8b5 100%);
+  background-color: #F8F3EC;
   min-height: 100vh;
   color: #2c1a0e;
   font-family: var(--font-body);
@@ -145,7 +145,7 @@
 .page-title {
   font-family: var(--font-heading);
   font-size: 58px;
-  color: #2c1a0e;
+  color: #2D1B4E;
   margin-bottom: 16px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -154,7 +154,7 @@
 .page-title span {
   font-family: var(--font-heading);
   font-style: italic;
-  color: #8a5c1a;
+  color: var(--accent-olive);
   font-weight: 300;
   font-size: 64px;
 }
@@ -163,7 +163,7 @@
   font-size: 16px;
   max-width: 650px;
   margin: 0 auto 40px;
-  color: #6b4c2a;
+  color: var(--text-secondary);
   line-height: 1.8;
 }
 

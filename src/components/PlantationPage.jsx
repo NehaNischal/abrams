@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, MapPin, Compass, Sun, Wind, X } from 'lucide-react';
 import coffeeImg from '../assets/plantation_coffee.png';
-import cardamomImg from '../assets/plantation_cardamom.png';
+import cardamomImg from '../assets/plantation_cardamom.jpg';
 import pepperImg from '../assets/plantation_pepper.png';
-import clovesImg from '../assets/plantation_cloves.png';
+import clovesImg from '../assets/clove.png';
 import nutmegImg from '../assets/plantation_nutmeg.png';
 import Logo from './Logo';
 import './PlantationPage.css';
@@ -91,7 +91,7 @@ const PlantationPage = ({ onBack }) => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
                 className={`estate-card ${index % 2 === 1 ? 'reverse' : ''}`}
               >
-                {/* Image Section - overlay button completely removed */}
+                {/* Image Section */}
                 <div className="estate-image-wrapper">
                   <motion.div 
                     className="estate-image-box"
@@ -129,8 +129,6 @@ const PlantationPage = ({ onBack }) => {
         </div>
       </section>
 
-
-
       {/* Lightbox / Full-screen View Modal */}
       <AnimatePresence>
         {activeImage && (
@@ -160,6 +158,7 @@ const PlantationPage = ({ onBack }) => {
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };
