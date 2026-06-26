@@ -338,6 +338,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .plantation-hero {
+    padding: 130px 0 40px;
+  }
+}
+
 @media (max-width: 576px) {
   .plantation-title {
     font-size: 38px;

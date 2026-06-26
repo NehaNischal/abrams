@@ -74,6 +74,22 @@
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .navbar.scrolled {
+    padding: 6px 0;
+  }
+
+  .nav-logo-svg {
+    --logo-height: 75px;
+  }
+
+  .navbar.scrolled .nav-logo-svg {
+    --logo-height: 60px;
+  }
+
   .nav-links {
     display: none;
   }

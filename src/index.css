@@ -216,3 +216,9 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}

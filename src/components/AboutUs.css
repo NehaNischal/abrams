@@ -316,6 +316,10 @@
 }
 
 @media (max-width: 768px) {
+  .about-us-page.standalone {
+    padding-top: 130px;
+  }
+
   .about-header, .everyday-luxury {
     flex-direction: column;
     gap: 40px;
