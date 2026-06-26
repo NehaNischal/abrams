@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Twitter, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
+import { Instagram, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
 import './Footer.css';
 
@@ -17,9 +17,7 @@ const Footer = () => {
               to your home. Sustainable, organic, and world-class.
             </p>
             <div className="social-links">
-              <a href="#"><Facebook size={20} /></a>
               <a href="https://www.instagram.com/_abraams" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
-              <a href="#"><Twitter size={20} /></a>
               <a href="https://www.linkedin.com/company/abramsgroup/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
             </div>
           </div>

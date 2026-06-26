@@ -183,8 +183,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Highly Concentrated'
       },
       origin: {
-        estate: 'Mist-covered Peaks of Idukki, Kerala',
-        region: 'Cardamom Hills, Idukki'
+        estate: 'Abrams Plantation',
+        region: 'Western Ghats'
       },
       benefits: ['Promotes Digestion', 'Rich in Antioxidants', 'Natural Breath Freshener'],
       usage: 'Crush pods slightly to release seeds. Ideal for gourmet baking, premium chai, and infusing delicate cream desserts.'
@@ -202,8 +202,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Sharp & Vibrant'
       },
       origin: {
-        estate: 'Bio-diverse Black Pepper Hills, Idukki',
-        region: 'Black Pepper Hills, Idukki'
+        estate: 'Abrams Plantation',
+        region: 'Western Ghats'
       },
       benefits: ['Enhances Nutrient Absorption', 'Supports Metabolism', 'Powerful Anti-inflammatory'],
       usage: 'Grind fresh over seared meats, savory soups, luxury broths, and artisanal cheese platters.'
@@ -221,8 +221,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Extremely Pungent'
       },
       origin: {
-        estate: 'Sunlit Mountain Hillsides, Idukki',
-        region: 'Clove Hills, Idukki'
+        estate: 'Abrams Plantation',
+        region: 'Western Ghats'
       },
       benefits: ['Supports Oral Health', 'High in Antioxidants', 'Soothes Respiratory Comfort'],
       usage: 'Use whole in rich curries, festive mulled wines, or grind sparingly into master spice blends.'
@@ -240,8 +240,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Warm & Fragrant'
       },
       origin: {
-        estate: 'Humid Alluvial Valleys, Idukki',
-        region: 'Nutmeg Hills, Idukki'
+        estate: 'Abrams Plantation',
+        region: 'Western Ghats'
       },
       benefits: ['Improves Sleep Quality', 'Promotes Brain Health', 'Calms Muscle Tension'],
       usage: 'Grate fresh over creamy Béchamel sauces, eggnogs, spiced coffees, and warm holiday pastries.'
@@ -259,8 +259,8 @@ const ProductsPage = ({ onBack }) => {
         strength: 'Fiery & Invigorating'
       },
       origin: {
-        estate: 'Ginger Hills, Idukki',
-        region: 'Ginger Hills, Idukki'
+        estate: 'Abrams Plantation',
+        region: 'Western Ghats'
       },
       benefits: ['Aids Digestion & Gut Health', 'Powerful Anti-nausea', 'Supports Immune System'],
       usage: 'Whisk into golden milk, marinades, ginger tea, curries, and baked goods for a warming depth of flavour.'

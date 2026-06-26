@@ -59,16 +59,7 @@ const Navbar = ({ onNavigate, isLoaded = true }) => {
                     if (onNavigate) onNavigate('home');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   } else if (item === 'Contact') {
-                    if (onNavigate) onNavigate('home');
-                    setTimeout(() => {
-                      const contactEl = document.getElementById('contact');
-                      if (contactEl) {
-                        const navbarHeight = 80;
-                        const elementPosition = contactEl.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                      }
-                    }, 100);
+                    if (onNavigate) onNavigate('home', 'contact');
                   }
                 }}
               >

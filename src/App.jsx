@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -16,13 +16,52 @@ import './App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const scrollTargetRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [counterValue, setCounterValue] = useState(0);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
+  const handleNavigate = (page, target = null) => {
+    if (page === currentPage && target) {
+      const element = document.getElementById(target);
+      if (element) {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    } else {
+      scrollTargetRef.current = target;
+      setCurrentPage(page);
+    }
+  };
+
   useEffect(() => {
-    // Scroll to the top when navigating between pages
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    const target = scrollTargetRef.current;
+    if (target) {
+      let attempts = 0;
+      let timeoutId;
+      const checkAndScroll = () => {
+        const element = document.getElementById(target);
+        if (element) {
+          const navbarHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          scrollTargetRef.current = null;
+        } else if (attempts < 20) {
+          attempts++;
+          timeoutId = setTimeout(checkAndScroll, 50);
+        } else {
+          scrollTargetRef.current = null;
+        }
+      };
+      timeoutId = setTimeout(checkAndScroll, 100);
+      return () => clearTimeout(timeoutId);
+    } else {
+      // Scroll to the top when navigating between pages
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
   }, [currentPage]);
 
   useEffect(() => {
@@ -99,8 +138,8 @@ function App() {
             variants={pageVariants}
             style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
           >
-            <Hero onNavigate={setCurrentPage} isLoaded={!isLoading} />
-            <About onNavigate={setCurrentPage} />
+            <Hero onNavigate={handleNavigate} isLoaded={!isLoading} />
+            <About onNavigate={handleNavigate} />
             <Certifications />
             <Contact />
             <Footer />
@@ -116,7 +155,7 @@ function App() {
             variants={pageVariants}
             style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
           >
-            <PlantationPage onBack={() => setCurrentPage('home')} />
+            <PlantationPage onBack={() => handleNavigate('home')} />
             <Footer />
           </motion.div>
         );
@@ -130,7 +169,7 @@ function App() {
             variants={pageVariants}
             style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
           >
-            <ProductsPage onBack={() => setCurrentPage('home')} />
+            <ProductsPage onBack={() => handleNavigate('home')} />
             <Footer />
           </motion.div>
         );
@@ -144,7 +183,7 @@ function App() {
             variants={pageVariants}
             style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
           >
-            <WhyUsPage onBack={() => setCurrentPage('home')} />
+            <WhyUsPage onBack={() => handleNavigate('home')} />
             <Footer />
           </motion.div>
         );
@@ -158,7 +197,7 @@ function App() {
             variants={pageVariants}
             style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
           >
-            <AboutUs onBack={() => setCurrentPage('home')} />
+            <AboutUs onBack={() => handleNavigate('home')} />
             <Footer />
           </motion.div>
         );
@@ -172,7 +211,7 @@ function App() {
             variants={pageVariants}
             style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
           >
-            <GalleryPage onBack={() => setCurrentPage('home')} />
+            <GalleryPage onBack={() => handleNavigate('home')} />
           </motion.div>
         );
       default:
@@ -254,7 +293,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      <Navbar onNavigate={setCurrentPage} isLoaded={!isLoading} />
+      <Navbar onNavigate={handleNavigate} isLoaded={!isLoading} />
 
       <AnimatePresence mode="wait">
         {renderPage()}
