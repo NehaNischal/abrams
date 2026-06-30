@@ -369,17 +369,24 @@
   }
 
   .gallery-masonry-grid {
-    gap: 20px;
+    gap: 12px;
   }
   .gallery-masonry-item {
-    flex: 0 1 100%;
+    flex: 0 1 calc(50% - 6px);
+    border-radius: 16px;
   }
 
   .gallery-overlay {
-    padding: 24px;
+    padding: 12px;
   }
 
   .overlay-content h3 {
-    font-size: 18px;
+    font-size: 13px;
+  }
+
+  .overlay-content .zoom-icon {
+    width: 16px;
+    height: 16px;
+    margin-bottom: 6px;
   }
 }
