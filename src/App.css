@@ -122,6 +122,9 @@ footer {
 
 /* Pulsing neon gold logo animation */
 .preloader-logo-svg {
+  --logo-height: 360px;
+  margin-top: -110px;
+  margin-bottom: -110px;
   animation: preloader-pulse 2s infinite ease-in-out alternate;
   filter: drop-shadow(0 0 15px rgba(223, 183, 108, 0.3));
 }

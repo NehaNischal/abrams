@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import './Navbar.css';
 
-const Navbar = ({ onNavigate, isLoaded = true }) => {
+const Navbar = ({ onNavigate, isLoaded = true, currentPage = 'home' }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,12 +19,12 @@ const Navbar = ({ onNavigate, isLoaded = true }) => {
   const menuItems = ['Home', 'About Us', 'Products', 'Why Us', 'Visuals', 'Contact'];
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''} page-${currentPage}`}>
       <div className="container nav-container">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ type: "spring", stiffness: 100, damping: 15, delay: isLoaded ? 0.3 : 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15, delay: isLoaded ? 2.2 : 0 }}
           whileHover={{ scale: 1.05, rotate: 2 }}
           whileTap={{ scale: 0.98 }}
           className="nav-logo"
@@ -42,7 +42,7 @@ const Navbar = ({ onNavigate, isLoaded = true }) => {
                 type: "spring", 
                 stiffness: 100, 
                 damping: 15, 
-                delay: isLoaded ? (index * 0.08 + 0.4) : 0 
+                delay: isLoaded ? (index * 0.06 + 2.35) : 0 
               }}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}

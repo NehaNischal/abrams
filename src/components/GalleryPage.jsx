@@ -18,6 +18,7 @@ import gingerPowderImg from '../../gallery/ginger powder.jpg';
 import turmericPowderImg from '../../gallery/turmeric powder.png';
 import turmericImg from '../../gallery/turmeric.png';
 import whatsappImg1 from '../../gallery/WhatsApp Image 2026-06-01 at 7.20.47 PM (1).jpeg';
+import mistyEstateImg from '../../gallery/misty_estate.png';
 
 const GalleryPage = ({ onBack }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
@@ -39,7 +40,8 @@ const GalleryPage = ({ onBack }) => {
     { id: 10, image: gingerPowderImg, title: "Artisanal Ginger Powder" },
     { id: 11, image: turmericPowderImg, title: "Turmeric Powder" },
     { id: 12, image: turmericImg, title: "Fresh Turmeric Roots" },
-    { id: 13, image: whatsappImg1, title: "Premium Sourcing" }
+    { id: 13, image: whatsappImg1, title: "Premium Sourcing" },
+    { id: 14, image: mistyEstateImg, title: "High-Altitude Misty Estate" }
   ];
 
   return (

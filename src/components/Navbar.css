@@ -34,12 +34,19 @@
 }
 
 .nav-logo-svg {
-  --logo-height: 150px;
+  --logo-height: 270px;
+  margin-top: -95px;
+  margin-bottom: -95px;
+  margin-left: -32px;
   transition: var(--transition-smooth);
+  pointer-events: none;
 }
 
 .navbar.scrolled .nav-logo-svg {
-  --logo-height: 110px;
+  --logo-height: 200px;
+  margin-top: -72px;
+  margin-bottom: -72px;
+  margin-left: -24px;
 }
 
 .nav-links {
@@ -51,8 +58,8 @@
 }
 
 .nav-links a {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -83,11 +90,17 @@
   }
 
   .nav-logo-svg {
-    --logo-height: 75px;
+    --logo-height: 160px;
+    margin-top: -55px;
+    margin-bottom: -55px;
+    margin-left: -18px;
   }
 
   .navbar.scrolled .nav-logo-svg {
-    --logo-height: 60px;
+    --logo-height: 120px;
+    margin-top: -42px;
+    margin-bottom: -42px;
+    margin-left: -14px;
   }
 
   .nav-links {
@@ -134,8 +147,8 @@
   }
 
   .mobile-nav-links a {
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--text-primary);
@@ -150,4 +163,24 @@
     opacity: 1;
     color: var(--accent-olive);
   }
+}
+
+/* Transparent navbar on homepage before scroll: white text and logo */
+.navbar.page-home:not(.scrolled) .nav-links a {
+  color: #ffffff;
+  opacity: 0.95;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.navbar.page-home:not(.scrolled) .nav-links a:hover {
+  color: #e0b869;
+  opacity: 1;
+}
+
+.navbar.page-home:not(.scrolled) .nav-logo-svg {
+  filter: brightness(0) invert(1);
+}
+
+.navbar.page-home:not(.scrolled) .mobile-menu-btn {
+  color: #ffffff;
 }

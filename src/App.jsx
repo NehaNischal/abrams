@@ -17,9 +17,9 @@ import './App.css';
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const scrollTargetRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [counterValue, setCounterValue] = useState(0);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [isInitialLoad, setIsInitialLoad] = useState(false);
 
   const handleNavigate = (page, target = null) => {
     if (page === currentPage && target) {
@@ -64,40 +64,7 @@ function App() {
     }
   }, [currentPage]);
 
-  useEffect(() => {
-    // Elegant automatic brand preloader timer
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      // Wait for shutters to slide open completely, then turn off initial load delays
-      const loadTimer = setTimeout(() => {
-        setIsInitialLoad(false);
-      }, 2000);
-      return () => clearTimeout(loadTimer);
-    }, 2200);
-
-    // Dynamic cubic-ease out counter (0 to 100) tied to the 1.8s progress bar fill
-    const end = 100;
-    const duration = 1800; // 1.8s
-    const startTime = performance.now();
-
-    const animateCounter = (currentTime) => {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      
-      // smooth ease-out progress
-      const easeProgress = 1 - Math.pow(1 - progress, 3); // cubic ease out
-      const currentVal = Math.floor(easeProgress * end);
-      
-      setCounterValue(currentVal);
-
-      if (progress < 1) {
-        requestAnimationFrame(animateCounter);
-      }
-    };
-
-    requestAnimationFrame(animateCounter);
-    return () => clearTimeout(timer);
-  }, []);
+  // Preloader removed by request
 
   const pageVariants = {
     initial: {
@@ -221,79 +188,7 @@ function App() {
 
   return (
     <div className="app">
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div 
-            key="preloader"
-            className="website-preloader-container"
-            exit={{ 
-              pointerEvents: "none",
-              transition: { delay: 1.4 } // Allow shutters to slide open completely first
-            }}
-          >
-            {/* Split shutter curtains */}
-            <motion.div 
-              className="preloader-shutter left"
-              initial={{ x: "0%" }}
-              exit={{ x: "-100%" }}
-              transition={{ duration: 1.4, ease: [0.85, 0, 0.15, 1], delay: 0.6 }}
-            />
-            <motion.div 
-              className="preloader-shutter right"
-              initial={{ x: "0%" }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 1.4, ease: [0.85, 0, 0.15, 1], delay: 0.6 }}
-            />
-
-            <div className="preloader-content">
-              {/* Pulsing luxurious brand monogram */}
-              <motion.div
-                initial={{ scale: 0.85, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0, transition: { duration: 0.4 } }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="preloader-logo-wrapper"
-              >
-                <Logo className="preloader-logo-svg" style={{ filter: 'brightness(0) invert(1)' }} />
-              </motion.div>
-              
-              {/* Elegant percentage counter */}
-              <div className="preloader-counter-container">
-                <motion.span 
-                  className="preloader-counter-number"
-                  exit={{ opacity: 0, transition: { duration: 0.4 } }}
-                >
-                  {counterValue}%
-                </motion.span>
-              </div>
-
-              {/* Thin gold progress bar */}
-              <div className="preloader-progress-bar">
-                <motion.div 
-                  className="preloader-progress-fill"
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  exit={{ opacity: 0, transition: { duration: 0.4 } }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
-                />
-              </div>
-
-              {/* Tagline */}
-              <motion.span 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10, transition: { duration: 0.4 } }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="preloader-tagline"
-              >
-                CRAFTING NATURE'S FINEST
-              </motion.span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <Navbar onNavigate={handleNavigate} isLoaded={!isLoading} />
+      <Navbar onNavigate={handleNavigate} isLoaded={true} currentPage={currentPage} />
 
       <AnimatePresence mode="wait">
         {renderPage()}
