@@ -369,7 +369,6 @@ const ProductsPage = ({ onBack }) => {
                               <img src={product.image} alt={product.title} className="card-product-img" />
                             </div>
                             <div className="card-info-box">
-                              <span className="card-subtitle">{product.subtitle}</span>
                               <h3 className="card-title">{product.title}</h3>
                             </div>
                           </motion.div>
@@ -405,20 +404,16 @@ const ProductsPage = ({ onBack }) => {
                 <div className="product-detail-page-image-sec">
                   <div className="product-detail-image-card">
                     <img src={selectedProduct.image} alt={selectedProduct.title} className="product-detail-img" />
-                    <span className="product-detail-premium-badge">100% Single Origin</span>
                   </div>
                 </div>
 
                 {/* Right Column: Information Section */}
                 <div className="product-detail-page-content-sec">
-                  <span className="product-detail-page-subtitle">{selectedProduct.subtitle}</span>
                   <h1 className="product-detail-page-title">{selectedProduct.title}</h1>
-                  <p className="product-detail-page-description">{selectedProduct.description}</p>
 
                   {/* Flavor Profile Panel */}
                   <div className="product-detail-page-panel">
                     <h4 className="product-detail-page-panel-title">
-                      <Gem size={16} />
                       <span>Flavor Profile</span>
                     </h4>
                     <div className="product-detail-page-panel-grid">
@@ -440,21 +435,12 @@ const ProductsPage = ({ onBack }) => {
                   {/* Terroir & Origin Panel */}
                   <div className="product-detail-page-panel">
                     <h4 className="product-detail-page-panel-title">
-                      <MapPin size={16} />
                       <span>Terroir & Origin</span>
                     </h4>
                     <div className="product-detail-page-panel-grid">
                       <div className="product-detail-page-panel-item">
                         <span className="product-detail-page-panel-label">Estate</span>
                         <span className="product-detail-page-panel-val">{selectedProduct.origin.estate}</span>
-                      </div>
-                      <div className="product-detail-page-panel-item">
-                        <span className="product-detail-page-panel-label">Region</span>
-                        <span className="product-detail-page-panel-val">{selectedProduct.origin.region}</span>
-                      </div>
-                      <div className="product-detail-page-panel-item">
-                        <span className="product-detail-page-panel-label">Elevation</span>
-                        <span className="product-detail-page-panel-val">{selectedProduct.origin.elevation || '1,100m'}</span>
                       </div>
                     </div>
                   </div>
@@ -493,6 +479,12 @@ const ProductsPage = ({ onBack }) => {
                       <span>Inquire on WhatsApp</span>
                     </a>
                   </div>
+                </div>
+
+                {/* Overview Section */}
+                <div className="product-detail-page-overview">
+                  <h3 className="product-detail-page-overview-heading">Overview</h3>
+                  <p className="product-detail-page-overview-para">{selectedProduct.description}</p>
                 </div>
               </div>
             </div>

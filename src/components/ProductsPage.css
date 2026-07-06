@@ -904,6 +904,8 @@
 .product-detail-page-content-sec {
   display: flex;
   flex-direction: column;
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 .product-detail-page-subtitle {
@@ -933,12 +935,12 @@
 }
 
 .product-detail-page-panel {
-  border: 1px solid rgba(45, 27, 78, 0.12);
-  background-color: #2D1B4E;
+  border: 1px solid rgba(45, 27, 78, 0.08);
+  background-color: #F8F6F2;
   border-radius: 8px;
   padding: 24px 28px;
   margin-bottom: 24px;
-  box-shadow: 0 6px 20px rgba(45, 27, 78, 0.04);
+  box-shadow: 0 4px 12px rgba(45, 27, 78, 0.02);
 }
 
 .product-detail-page-panel-title {
@@ -949,12 +951,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #dfb76c;
+  color: var(--accent-olive, #4B5320);
   margin: 0 0 18px 0;
 }
 
 .product-detail-page-panel-title svg {
-  color: #dfb76c;
+  color: var(--accent-olive, #4B5320);
 }
 
 .product-detail-page-panel-grid {
@@ -973,14 +975,14 @@
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.45);
   font-weight: 700;
 }
 
 .product-detail-page-panel-val {
   font-size: 14px;
   font-weight: 600;
-  color: #ffffff;
+  color: #2D1B4E;
   line-height: 1.4;
 }
 
@@ -1070,6 +1072,32 @@
   to { opacity: 1; }
 }
 
+/* Overview Section inside Left Column */
+.product-detail-page-overview {
+  grid-column: 1;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid #EAE5DD;
+}
+
+.product-detail-page-overview-heading {
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: #2D1B4E;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.product-detail-page-overview-para {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.65);
+  margin: 0;
+}
+
 /* Media Responsive Queries */
 @media (max-width: 1024px) {
   .products-catalog-container {
@@ -1142,6 +1170,17 @@
 
   .product-detail-page-image-sec {
     position: static;
+  }
+
+  .product-detail-page-content-sec {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .product-detail-page-overview {
+    grid-column: auto;
+    margin-top: 10px;
+    padding-top: 20px;
   }
 
   .product-detail-image-card {

@@ -6,7 +6,6 @@ import About from './components/About';
 import AboutUs from './components/AboutUs';
 import WhyUsPage from './components/WhyUsPage';
 import GalleryPage from './components/GalleryPage';
-import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProductsPage from './components/ProductsPage';
@@ -107,7 +106,6 @@ function App() {
           >
             <Hero onNavigate={handleNavigate} isLoaded={!isLoading} />
             <About onNavigate={handleNavigate} />
-            <Certifications />
             <Contact />
             <Footer />
           </motion.div>

@@ -9,7 +9,7 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
     visible: {
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 2.2 // Delay title animation start until video zoom out completes
+        delayChildren: 0.4 // Delay title animation slightly for initial fade-in
       }
     }
   };
@@ -19,7 +19,7 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
     visible: {
       transition: {
         staggerChildren: 0.08,
-        delayChildren: 3.1 // Delay quote animation start until title animation finishes
+        delayChildren: 1.1 // Delay quote animation to flow smoothly after title
       }
     }
   };
@@ -38,7 +38,7 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, delay: 4.1, ease: [0.16, 1, 0.3, 1] } // Fade buttons in after quote completes
+      transition: { duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] } // Fade buttons in after quote
     }
   };
 
@@ -59,10 +59,11 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
         muted 
         playsInline
         preload="auto"
-        initial={{ scale: 1.25 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
       />
+      <div className="hero-overlay" />
       
       <div className="container hero-container">
         <div className="hero-content">
