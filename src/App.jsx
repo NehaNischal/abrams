@@ -19,8 +19,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [counterValue, setCounterValue] = useState(0);
   const [isInitialLoad, setIsInitialLoad] = useState(false);
+  const [productsResetCounter, setProductsResetCounter] = useState(0);
 
   const handleNavigate = (page, target = null) => {
+    if (page === 'products-page') {
+      setProductsResetCounter(prev => prev + 1);
+    }
     if (page === currentPage && target) {
       const element = document.getElementById(target);
       if (element) {
@@ -134,7 +138,10 @@ function App() {
             variants={pageVariants}
             style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
           >
-            <ProductsPage onBack={() => handleNavigate('home')} />
+            <ProductsPage 
+              key={`products-${productsResetCounter}`} 
+              onBack={() => handleNavigate('home')} 
+            />
             <Footer />
           </motion.div>
         );

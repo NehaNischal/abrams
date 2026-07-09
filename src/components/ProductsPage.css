@@ -2,7 +2,7 @@
   background-color: #FAF8F5;
   min-height: 100vh;
   color: #1a1a1a;
-  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--font-body);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -23,8 +23,8 @@
 }
 
 .page-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: 46px;
+  font-family: var(--font-heading);
+  font-size: 56px;
   color: #2D1B4E;
   margin-bottom: 12px;
   font-weight: 700;
@@ -32,7 +32,7 @@
 }
 
 .page-title span {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading);
   font-style: italic;
   color: var(--accent-olive, #4B5320);
   font-weight: 300;
@@ -381,7 +381,7 @@
 }
 
 .card-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading);
   font-size: 18px;
   font-weight: 700;
   color: #2D1B4E;
@@ -408,7 +408,7 @@
 }
 
 .no-products-message h3 {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading);
   font-size: 24px;
   color: #2D1B4E;
   margin-bottom: 12px;
@@ -517,7 +517,7 @@
 }
 
 .drawer-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading);
   font-size: 26px;
   font-weight: 700;
   color: #2D1B4E;
@@ -525,7 +525,7 @@
 }
 
 .drawer-description {
-  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.6;
   color: rgba(0, 0, 0, 0.65);
@@ -806,6 +806,7 @@
   margin: 0 auto;
   padding: 0 40px;
   box-sizing: border-box;
+  text-align: left;
 }
 
 .product-detail-page-header {
@@ -918,7 +919,7 @@
 }
 
 .product-detail-page-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading);
   font-size: 44px;
   font-weight: 700;
   color: #2D1B4E;
@@ -927,112 +928,54 @@
 }
 
 .product-detail-page-description {
-  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.65);
   margin: 0 0 36px 0;
 }
 
-.product-detail-page-panel {
-  border: 1px solid rgba(45, 27, 78, 0.08);
-  background-color: #F8F6F2;
-  border-radius: 8px;
-  padding: 24px 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(45, 27, 78, 0.02);
-}
-
-.product-detail-page-panel-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent-olive, #4B5320);
-  margin: 0 0 18px 0;
-}
-
-.product-detail-page-panel-title svg {
-  color: var(--accent-olive, #4B5320);
-}
-
-.product-detail-page-panel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.product-detail-page-panel-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.product-detail-page-panel-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(0, 0, 0, 0.45);
-  font-weight: 700;
-}
-
-.product-detail-page-panel-val {
-  font-size: 14px;
-  font-weight: 600;
-  color: #2D1B4E;
-  line-height: 1.4;
-}
-
-.product-detail-page-section {
-  border-top: 1px solid #EAE5DD;
-  padding: 28px 0;
-}
-
-.product-detail-page-section:last-of-type {
-  border-bottom: 1px solid #EAE5DD;
+.product-specs-table-wrapper {
+  margin-top: 10px;
   margin-bottom: 36px;
+  width: 100%;
 }
 
-.product-detail-page-section-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
+.product-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.product-specs-row {
+  border-bottom: 1px solid #EAE5DD;
+}
+
+.product-specs-row:first-child {
+  border-top: 1px solid #EAE5DD;
+}
+
+.product-specs-key {
+  width: 32%;
+  padding: 16px 24px 16px 0;
+  font-family: var(--font-heading);
+  font-size: 13px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   color: #2D1B4E;
-  margin: 0 0 16px 0;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-right: 1px solid #EAE5DD;
+  vertical-align: middle;
 }
 
-.product-detail-page-section-title svg {
-  color: var(--accent-olive, #4B5320);
-}
-
-.product-detail-page-benefits-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.product-detail-page-benefit-tag {
-  background-color: rgba(75, 83, 32, 0.06);
-  border: 1px solid rgba(75, 83, 32, 0.15);
-  color: var(--accent-olive, #4B5320);
-  font-size: 12px;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-}
-
-.product-detail-page-usage-text {
+.product-specs-val {
+  padding: 16px 0 16px 24px;
+  font-family: var(--font-body);
   font-size: 14px;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 400;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.7);
-  margin: 0;
+  vertical-align: middle;
 }
 
 .product-detail-page-cta-wrapper {
@@ -1078,24 +1021,27 @@
   margin-top: 36px;
   padding-top: 24px;
   border-top: 1px solid #EAE5DD;
+  text-align: left;
 }
 
 .product-detail-page-overview-heading {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 700;
   color: #2D1B4E;
   margin: 0 0 12px 0;
   text-transform: uppercase;
   letter-spacing: 2px;
+  text-align: left;
 }
 
 .product-detail-page-overview-para {
-  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.65);
   margin: 0;
+  text-align: left;
 }
 
 /* Media Responsive Queries */

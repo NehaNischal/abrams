@@ -122,7 +122,6 @@ const GalleryPage = ({ onBack }) => {
                       transition={{ type: "spring", stiffness: 110, damping: 13 }}
                     >
                       <Maximize2 size={24} className="zoom-icon" />
-                      <h3>{item.title}</h3>
                     </motion.div>
                   </div>
                 </motion.div>

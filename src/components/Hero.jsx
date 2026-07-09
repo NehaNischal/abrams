@@ -14,16 +14,6 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
     }
   };
 
-  const quoteContainerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 1.1 // Delay quote animation to flow smoothly after title
-      }
-    }
-  };
-
   const wordVariants = {
     hidden: { opacity: 0, y: 15 },
     visible: {
@@ -38,16 +28,12 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] } // Fade buttons in after quote
+      transition: { duration: 0.8, delay: 1.5, ease: [0.16, 1, 0.3, 1] } // Fade buttons in after description
     }
   };
 
   const titleWords = ["The", "Mix", "of"];
   const goldWords = ["Golden", "Spices"];
-  const quoteWords = [
-    '"Experience', 'the', 'luxury', 'of', 'pure', 
-    'organic', 'spices,', 'crafted', 'with', 'integrity."'
-  ];
 
   return (
     <section className="hero" id="home">
@@ -94,22 +80,14 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
               </motion.span>
             ))}
           </motion.h1>
-          
-          <motion.p 
-            variants={quoteContainerVariants}
-            initial="hidden"
-            animate={isLoaded ? "visible" : "hidden"}
-            className="hero-quote"
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            className="hero-description"
           >
-            {quoteWords.map((word, i) => (
-              <motion.span
-                key={`quote-${i}`}
-                variants={wordVariants}
-                style={{ display: 'inline-block', marginRight: '0.22em' }}
-              >
-                {word}
-              </motion.span>
-            ))}
+            "Experience the luxury of pure organic spices, crafted with integrity."
           </motion.p>
           
           <motion.div 

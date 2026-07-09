@@ -12,6 +12,49 @@ import cloveImg from '../assets/clove.jpeg';
 import nutmegImg from '../assets/nutmeg.jpeg';
 import gingerImg from '../assets/ginger_powder.jpeg';
 
+const getProductSpecs = (product) => {
+  if (!product) return [];
+
+  let tier = 'Premium';
+  let harvest = 'Hand-picked at Peak Maturity';
+  let packaging = '250g • 500g • 1kg • 10kg';
+  let shelfLife = '12 Months';
+
+  if (product.id === 'cardamom') {
+    tier = 'Premium (Bold Green)';
+  } else if (product.id === 'black-pepper') {
+    tier = 'Premium Bold Grade';
+    harvest = 'Vine-ripened, Naturally Sun-dried';
+    packaging = '250g • 500g • 1kg';
+  } else if (product.id === 'clove') {
+    tier = 'Premium Whole Cloves';
+    harvest = 'Hand-picked Flower Buds, Peak Maturity';
+    packaging = '250g • 500g • 1kg';
+  } else if (product.id === 'nutmeg') {
+    tier = 'Premium Whole Grade';
+    harvest = 'Fully Mature, Hand-picked & Naturally Dried';
+    packaging = '250g • 500g • 1kg';
+  } else if (product.id === 'ginger') {
+    tier = 'Premium Fine Ground';
+    harvest = 'Mature Rhizomes, Naturally Dried & Finely Milled';
+    packaging = '250g • 500g • 1kg';
+  } else if (product.id === 'coffee') {
+    tier = 'Specialty Estate Grade';
+    harvest = 'Selectively Hand-picked, Peak Ripeness';
+    packaging = '250g • 500g • 1kg';
+  }
+
+  return [
+    { key: 'FRAGRANCE', val: product.flavorNotes?.aroma || 'Aromatic' },
+    { key: 'PALATE', val: product.flavorNotes?.flavor || 'Rich flavour' },
+    { key: 'INTENSITY', val: product.flavorNotes?.strength || 'Highly Concentrated' },
+    { key: 'TIER', val: tier },
+    { key: 'HARVEST', val: harvest },
+    { key: 'PACKAGING', val: packaging },
+    { key: 'SHELF LIFE', val: shelfLife }
+  ];
+};
+
 const ProductsPage = ({ onBack }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [sortBy, setSortBy] = useState('recommended');
@@ -41,10 +84,10 @@ const ProductsPage = ({ onBack }) => {
       title: 'Premium Cardamom',
       image: cardamomImg,
       subtitle: 'WESTERN GHATS ORIGIN',
-      description: 'Our green cardamom pods are hand-selected at peak maturity for their vibrant green color and intense aromatic profile. Sourced exclusively from shaded, high-altitude estates.',
+      description: 'Known as the “Queen of Spices,” Green Cardamom is one of the world’s most prized aromatic spices, celebrated for its vibrant colour, distinctive fragrance, and exceptional flavour. Cultivated in the mist-covered hills of the Western Ghats, our premium cardamom is grown under ideal climatic conditions that enhance its essential oil content and natural sweetness. Each pod is carefully hand-picked at peak maturity, ensuring superior quality, freshness, and consistency. Widely used in premium culinary applications, beverages, confectionery, pharmaceuticals, and wellness products, Abrams Plantation Green Cardamom represents the finest expression of Kerala’s spice heritage.',
       flavorNotes: {
         aroma: 'Intensely sweet, floral & herbal',
-        flavor: 'Warm, citrusy, with sweet eucalyptol undertones',
+        flavor: 'Warm, citrusy, sweet eucalyptol undertones',
         strength: 'Highly Concentrated'
       },
       origin: {
@@ -63,11 +106,11 @@ const ProductsPage = ({ onBack }) => {
       title: 'Premium Black Pepper',
       image: blackPepperImg,
       subtitle: 'WESTERN GHATS ORIGIN',
-      description: 'Plump, high-density peppercorns harvested from high-climbing vines. Slow sun-dried to lock in maximum piperine content and rich, woody essential oils.',
+      description: 'Often referred to as the “King of Spices,” Black Pepper from the Western Ghats has earned global recognition for its bold flavour, rich aroma, and naturally high piperine content. Our pepper vines thrive in fertile plantation soils and are harvested only when the berries reach optimum maturity. The peppercorns are naturally sun-dried, cleaned, and graded to preserve their robust character, delivering a premium ingredient trusted by food manufacturers, gourmet chefs, and international spice traders worldwide.',
       flavorNotes: {
-        aroma: 'Sharp, woody & deeply pungent',
-        flavor: 'Bold, escalating heat with subtle cedar notes',
-        strength: 'Sharp & Vibrant'
+        aroma: 'Bold, woody, earthy & spicy',
+        flavor: 'Sharp heat, citrus & woody finish',
+        strength: 'High Piperine Content'
       },
       origin: {
         estate: 'Abrams Plantation',
@@ -85,11 +128,11 @@ const ProductsPage = ({ onBack }) => {
       title: 'Premium Clove',
       image: cloveImg,
       subtitle: 'WESTERN GHATS ORIGIN',
-      description: 'Handpicked evergreen flower buds harvested just as they turn a crimson-pink. Sun-dried to preserve their high oil content and rich sweet-spicy scent.',
+      description: 'Harvested from the unopened flower buds of carefully cultivated clove trees, Abrams Plantation Cloves are renowned for their intense aroma, high essential oil content, and exceptional quality. Grown in the cool, humid climate of the Western Ghats, every bud is hand-picked at the ideal stage of maturity and naturally dried to preserve its rich flavour profile. Our cloves are widely used in premium culinary products, essential oils, pharmaceuticals, and wellness applications.',
       flavorNotes: {
-        aroma: 'Deeply sweet, spicy & medicinal',
-        flavor: 'Warm, intensely numbing, sweet and pungent',
-        strength: 'Extremely Pungent'
+        aroma: 'Warm, sweet & intensely aromatic',
+        flavor: 'Rich spice, lingering sweetness',
+        strength: 'High Essential Oil Content'
       },
       origin: {
         estate: 'Abrams Plantation',
@@ -107,11 +150,11 @@ const ProductsPage = ({ onBack }) => {
       title: 'Premium Nutmeg',
       image: nutmegImg,
       subtitle: 'WESTERN GHATS ORIGIN',
-      description: 'Whole nutmeg seeds kept in their natural protective shell. Grate fresh to release the highly volatile oils that give nutmeg its sweet, woody flavor.',
+      description: 'Nutmeg is one of the world’s most treasured aromatic spices, appreciated for its warm sweetness, rich essential oils, and remarkable versatility. Grown within the fertile landscapes of the Western Ghats, Abrams Plantation Nutmeg is harvested only after full maturity to ensure optimum flavour and oil concentration. Carefully processed and naturally dried, our premium nutmeg is suitable for gourmet cuisine, baking, beverages, pharmaceuticals, cosmetics, and premium spice blends.',
       flavorNotes: {
-        aroma: 'Sweet, warm, woody & comforting',
-        flavor: 'Sweet, nutty, with a mild spicy undertone',
-        strength: 'Warm & Fragrant'
+        aroma: 'Sweet, warm & woody',
+        flavor: 'Rich, mildly sweet, earthy spice',
+        strength: 'High Essential Oil Content'
       },
       origin: {
         estate: 'Abrams Plantation',
@@ -129,11 +172,11 @@ const ProductsPage = ({ onBack }) => {
       title: 'Premium Ginger Powder',
       image: gingerImg,
       subtitle: 'WESTERN GHATS ORIGIN',
-      description: 'Crafted from freshly harvested, plump ginger rhizomes that are sun-dried and stone-ground to preserve their full-spectrum essential oils, giving you a warm, fiery depth in every pinch.',
+      description: 'Our Ginger Powder is produced from carefully selected mature ginger rhizomes cultivated in the nutrient-rich soils of the Western Ghats. After harvesting, the ginger is naturally dried and finely milled to preserve its authentic flavour, aroma, and active compounds. The result is a premium-quality powder with remarkable freshness and pungency, suitable for food processing, baking, beverages, nutraceuticals, and pharmaceutical applications.',
       flavorNotes: {
-        aroma: 'Warm, zesty & peppery',
-        flavor: 'Bold, spicy heat with a sweet citrus finish',
-        strength: 'Fiery & Invigorating'
+        aroma: 'Fresh, warm & spicy',
+        flavor: 'Pungent with earthy sweetness',
+        strength: 'Rich Natural Gingerols'
       },
       origin: {
         estate: 'Abrams Plantation',
@@ -151,11 +194,11 @@ const ProductsPage = ({ onBack }) => {
       title: 'Premium Coffee',
       image: coffeeImg,
       subtitle: 'WESTERN GHATS ORIGIN',
-      description: 'Hand-selected single-origin coffee beans sourced from the mist-shrouded peaks of Idukki. Slow-roasted in small batches to preserve their complex notes and rich body.',
+      description: 'Nestled within the biodiverse Western Ghats, Abrams Plantation cultivates premium coffee under a natural canopy of native shade trees, allowing the cherries to mature slowly and develop exceptional flavour complexity. Carefully hand-harvested and processed, our estate-grown coffee delivers a refined balance of sweetness, acidity, and body, making it ideal for specialty roasters, cafés, and gourmet retailers. Every bean reflects the rich volcanic soils and pristine mountain climate that define one of India’s most celebrated coffee-growing regions.',
       flavorNotes: {
-        aroma: 'Rich cocoa, hazelnut & floral',
-        flavor: 'Bold, chocolatey, with a clean caramel finish',
-        strength: 'Full-bodied'
+        aroma: 'Chocolate, caramel, floral & nutty',
+        flavor: 'Smooth body, balanced acidity, lingering sweetness',
+        strength: 'Medium to Full Body'
       },
       origin: {
         estate: 'Abrams Plantation',
@@ -411,60 +454,18 @@ const ProductsPage = ({ onBack }) => {
                 <div className="product-detail-page-content-sec">
                   <h1 className="product-detail-page-title">{selectedProduct.title}</h1>
 
-                  {/* Flavor Profile Panel */}
-                  <div className="product-detail-page-panel">
-                    <h4 className="product-detail-page-panel-title">
-                      <span>Flavor Profile</span>
-                    </h4>
-                    <div className="product-detail-page-panel-grid">
-                      <div className="product-detail-page-panel-item">
-                        <span className="product-detail-page-panel-label">Aroma</span>
-                        <span className="product-detail-page-panel-val">{selectedProduct.flavorNotes.aroma}</span>
-                      </div>
-                      <div className="product-detail-page-panel-item">
-                        <span className="product-detail-page-panel-label">Flavor</span>
-                        <span className="product-detail-page-panel-val">{selectedProduct.flavorNotes.flavor}</span>
-                      </div>
-                      <div className="product-detail-page-panel-item">
-                        <span className="product-detail-page-panel-label">Strength</span>
-                        <span className="product-detail-page-panel-val">{selectedProduct.flavorNotes.strength}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Terroir & Origin Panel */}
-                  <div className="product-detail-page-panel">
-                    <h4 className="product-detail-page-panel-title">
-                      <span>Terroir & Origin</span>
-                    </h4>
-                    <div className="product-detail-page-panel-grid">
-                      <div className="product-detail-page-panel-item">
-                        <span className="product-detail-page-panel-label">Estate</span>
-                        <span className="product-detail-page-panel-val">{selectedProduct.origin.estate}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Health Benefits Section */}
-                  <div className="product-detail-page-section">
-                    <h4 className="product-detail-page-section-title">
-                      <Shield size={16} />
-                      <span>Health Benefits</span>
-                    </h4>
-                    <div className="product-detail-page-benefits-tags">
-                      {selectedProduct.benefits.map((benefit, idx) => (
-                        <span key={idx} className="product-detail-page-benefit-tag">{benefit}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Recommended Usage Section */}
-                  <div className="product-detail-page-section">
-                    <h4 className="product-detail-page-section-title">
-                      <Droplet size={16} />
-                      <span>Recommended Usage</span>
-                    </h4>
-                    <p className="product-detail-page-usage-text">{selectedProduct.usage}</p>
+                  {/* Product Specifications Table */}
+                  <div className="product-specs-table-wrapper">
+                    <table className="product-specs-table">
+                      <tbody>
+                        {getProductSpecs(selectedProduct).map((spec, index) => (
+                          <tr key={index} className="product-specs-row">
+                            <td className="product-specs-key">{spec.key}</td>
+                            <td className="product-specs-val">{spec.val}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
 
                   {/* CTA Inquiry Link */}
