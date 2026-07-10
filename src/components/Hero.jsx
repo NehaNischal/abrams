@@ -39,7 +39,7 @@ const Hero = ({ onNavigate, isLoaded = true }) => {
     <section className="hero" id="home">
       <motion.video 
         className="hero-video-bg" 
-        src={`${heroVideo}?v=3`} 
+        src={`${heroVideo}?v=5`} 
         autoPlay 
         loop 
         muted 
