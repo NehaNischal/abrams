@@ -35,7 +35,7 @@
   margin-bottom: 32px;
   color: #ffffff;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .hero-title span,
@@ -86,15 +86,15 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  /* Hardware acceleration and sharpness overrides */
+  /* Hardware acceleration and max quality rendering hints */
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  filter: contrast(1.12) brightness(1.04) saturate(0.88) hue-rotate(-8deg);
+  image-rendering: auto;
+  will-change: transform;
 }
+
 
 .hero-overlay {
   position: absolute;
@@ -175,5 +175,19 @@
 @media (max-width: 768px) {
   .hero-title {
     font-size: 52px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(28px, 8.5vw, 38px);
+    margin-bottom: 20px;
+  }
+  .hero-description {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  .hero-btns {
+    gap: 12px;
   }
 }

@@ -301,10 +301,6 @@
   .about-main-title {
     font-size: 40px;
   }
-
-  .about-main-img {
-    height: 420px;
-  }
   
   .philosophy-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -343,10 +339,6 @@
     padding-left: 0;
     width: 100%;
   }
-
-  .about-main-img {
-    height: 340px;
-  }
   
   .philosophy-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -372,9 +364,5 @@
 
   .luxury-icons {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .about-main-img {
-    height: 280px;
   }
 }

@@ -282,18 +282,16 @@
   border: 1px solid #ECE7E1;
   box-shadow: 0 4px 12px rgba(45, 27, 78, 0.015);
   cursor: pointer;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Hover and layout transitions are handled via Framer Motion in ProductsPage.jsx */
 }
 
-.product-minimal-card:hover {
+/* Hover rule handled by Framer Motion whileHover */
+/*.product-minimal-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(45, 27, 78, 0.15);
   border-color: #2D1B4E;
   background-color: #2D1B4E;
-}
+}*/
 
 .card-image-box {
   background-color: #FAF9F6;

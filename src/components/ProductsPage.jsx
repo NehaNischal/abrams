@@ -12,6 +12,114 @@ import cloveImg from '../assets/clove.jpeg';
 import nutmegImg from '../assets/nutmeg.jpeg';
 import gingerImg from '../assets/ginger_powder.jpeg';
 
+// Animation Variants
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15
+    }
+  }
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -30 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 90,
+      damping: 14
+    }
+  }
+};
+
+const productCardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 90,
+      damping: 14
+    }
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.95,
+    transition: { duration: 0.2 }
+  }
+};
+
+const detailContainerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.15
+    }
+  }
+};
+
+const detailImageVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 14
+    }
+  }
+};
+
+const detailItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15
+    }
+  }
+};
+
+const detailRowVariants = {
+  hidden: { opacity: 0, x: -15 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15
+    }
+  }
+};
+
 const getProductSpecs = (product) => {
   if (!product) return [];
 
@@ -281,24 +389,19 @@ const ProductsPage = ({ onBack }) => {
           >
             {/* Hero Title Section */}
             <section className="products-hero">
-              <div className="container text-center">
-                <motion.h1 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="page-title"
-                >
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                animate="show"
+                className="container text-center"
+              >
+                <motion.h1 variants={fadeUpItem} className="page-title">
                   The Abrams <span>Masterpieces</span>
                 </motion.h1>
-                <motion.p 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="page-subtitle-text"
-                >
+                <motion.p variants={fadeUpItem} className="page-subtitle-text">
                   Sourced sustainably from the shaded, high-altitude estates of Western Ghats, Kerala.
                 </motion.p>
-              </div>
+              </motion.div>
             </section>
 
             {/* Main Grid & Filters Content Section */}
@@ -328,9 +431,14 @@ const ProductsPage = ({ onBack }) => {
                 <span className="products-count">{sortedProducts.length} Products</span>
               </div>
 
-              <div className="catalog-content-layout">
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                animate="show"
+                className="catalog-content-layout"
+              >
                 {/* Left Filter Sidebar - Desktop */}
-                <aside className="catalog-filter-sidebar">
+                <motion.aside className="catalog-filter-sidebar" variants={slideInLeft}>
                   <div className="sidebar-header">
                     <span className="filter-title">Filter</span>
                     {isAnyFilterActive && (
@@ -384,10 +492,10 @@ const ProductsPage = ({ onBack }) => {
                       );
                     })}
                   </div>
-                </aside>
+                </motion.aside>
 
                 {/* Right Product Grid */}
-                <main className="catalog-products-main">
+                <motion.main className="catalog-products-main" variants={fadeUpItem}>
                   {sortedProducts.length === 0 ? (
                     <div className="no-products-message">
                       <h3>No products match your selection</h3>
@@ -395,16 +503,26 @@ const ProductsPage = ({ onBack }) => {
                       <button className="btn btn-secondary" onClick={handleClearFilters}>Clear Filters</button>
                     </div>
                   ) : (
-                    <motion.div layout className="products-minimal-grid">
+                    <motion.div 
+                      layout 
+                      variants={staggerContainer}
+                      initial="hidden"
+                      animate="show"
+                      className="products-minimal-grid"
+                    >
                       <AnimatePresence mode="popLayout">
                         {sortedProducts.map((product) => (
                           <motion.div
                             layout
                             key={product.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.4 }}
+                            variants={productCardVariants}
+                            whileHover={{
+                              y: -8,
+                              boxShadow: "0 15px 35px rgba(45, 27, 78, 0.15)",
+                              borderColor: "#2D1B4E",
+                              backgroundColor: "#2D1B4E"
+                            }}
+                            transition={{ type: "spring", stiffness: 150, damping: 20 }}
                             className="product-minimal-card"
                             onClick={() => setSelectedProduct(product)}
                           >
@@ -412,6 +530,7 @@ const ProductsPage = ({ onBack }) => {
                               <img src={product.image} alt={product.title} className="card-product-img" />
                             </div>
                             <div className="card-info-box">
+                              <span className="card-subtitle">{product.subtitle}</span>
                               <h3 className="card-title">{product.title}</h3>
                             </div>
                           </motion.div>
@@ -419,58 +538,73 @@ const ProductsPage = ({ onBack }) => {
                       </AnimatePresence>
                     </motion.div>
                   )}
-                </main>
-              </div>
+                </motion.main>
+              </motion.div>
             </div>
           </motion.div>
         ) : (
           <motion.div
             key="product-detail"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
             className="product-detail-page-wrapper"
           >
-            <div className="product-detail-page-container">
+            <motion.div 
+              variants={detailContainerVariants}
+              initial="hidden"
+              animate="show"
+              className="product-detail-page-container"
+            >
               {/* Back navigation & logo header */}
-              <div className="product-detail-page-header">
-                <button className="product-detail-page-back-btn" onClick={() => setSelectedProduct(null)}>
+              <motion.div className="product-detail-page-header" variants={detailItemVariants}>
+                <motion.button 
+                  whileHover={{ x: -4 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                  className="product-detail-page-back-btn" 
+                  onClick={() => setSelectedProduct(null)}
+                >
                   <ArrowLeft size={16} />
                   <span>Back to Catalog</span>
-                </button>
-              </div>
-
+                </motion.button>
+              </motion.div>
+ 
               {/* Two-column Product Detail Layout */}
               <div className="product-detail-page-grid">
                 {/* Left Column: Premium Image Viewer */}
-                <div className="product-detail-page-image-sec">
+                <motion.div className="product-detail-page-image-sec" variants={detailImageVariants}>
                   <div className="product-detail-image-card">
                     <img src={selectedProduct.image} alt={selectedProduct.title} className="product-detail-img" />
                   </div>
-                </div>
-
+                </motion.div>
+ 
                 {/* Right Column: Information Section */}
                 <div className="product-detail-page-content-sec">
-                  <h1 className="product-detail-page-title">{selectedProduct.title}</h1>
-
+                  <motion.h1 className="product-detail-page-title" variants={detailItemVariants}>
+                    {selectedProduct.title}
+                  </motion.h1>
+ 
                   {/* Product Specifications Table */}
                   <div className="product-specs-table-wrapper">
                     <table className="product-specs-table">
-                      <tbody>
+                      <motion.tbody variants={staggerContainer}>
                         {getProductSpecs(selectedProduct).map((spec, index) => (
-                          <tr key={index} className="product-specs-row">
+                          <motion.tr key={index} className="product-specs-row" variants={detailRowVariants}>
                             <td className="product-specs-key">{spec.key}</td>
                             <td className="product-specs-val">{spec.val}</td>
-                          </tr>
+                          </motion.tr>
                         ))}
-                      </tbody>
+                      </motion.tbody>
                     </table>
                   </div>
-
+ 
                   {/* CTA Inquiry Link */}
-                  <div className="product-detail-page-cta-wrapper">
-                    <a 
+                  <motion.div className="product-detail-page-cta-wrapper" variants={detailItemVariants}>
+                    <motion.a 
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 12 }}
                       href={`https://wa.me/919400093627?text=Hi%20Abrams,%20I%20am%20interested%20in%20inquiring%20about%20your%20${encodeURIComponent(selectedProduct.title)}.`}
                       target="_blank" 
                       rel="noopener noreferrer" 
@@ -478,17 +612,17 @@ const ProductsPage = ({ onBack }) => {
                     >
                       <MessageSquare size={18} />
                       <span>Inquire on WhatsApp</span>
-                    </a>
-                  </div>
+                    </motion.a>
+                  </motion.div>
                 </div>
-
+ 
                 {/* Overview Section */}
-                <div className="product-detail-page-overview">
+                <motion.div className="product-detail-page-overview" variants={detailItemVariants}>
                   <h3 className="product-detail-page-overview-heading">Overview</h3>
                   <p className="product-detail-page-overview-para">{selectedProduct.description}</p>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
