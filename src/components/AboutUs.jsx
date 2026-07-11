@@ -74,7 +74,7 @@ const AboutUs = ({ onBack }) => {
             viewport={{ once: true }}
             className="about-header-image"
           >
-            <img src={aboutImg} alt="Abrams Spice Box" className="about-main-img" />
+            <img loading="lazy" src={aboutImg} alt="Abrams Spice Box" className="about-main-img" />
           </motion.div>
 
         </div>

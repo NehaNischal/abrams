@@ -152,7 +152,7 @@ const GalleryPage = ({ onBack }) => {
               <button className="lightbox-close-btn" onClick={() => setLightboxImage(null)}>
                 <X size={26} />
               </button>
-              <img src={lightboxImage.image} alt={lightboxImage.title} className="lightbox-image" />
+              <img loading="lazy" src={lightboxImage.image} alt={lightboxImage.title} className="lightbox-image" />
               <div className="lightbox-footer-caption">
                 <h3>{lightboxImage.title}</h3>
               </div>

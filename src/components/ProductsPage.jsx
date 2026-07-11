@@ -185,6 +185,30 @@ const ProductsPage = ({ onBack }) => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
+  // Manage browser history for product detail view
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (selectedProduct && (!event.state || !event.state.detail)) {
+        setSelectedProduct(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [selectedProduct]);
+
+  const handleProductSelect = (product) => {
+    setSelectedProduct(product);
+    window.history.pushState({ page: 'products-page', detail: true }, '', window.location.pathname);
+  };
+
+  const handleProductClose = () => {
+    if (window.history.state && window.history.state.detail) {
+      window.history.back();
+    } else {
+      setSelectedProduct(null);
+    }
+  };
+
   const productsList = [
     {
       id: 'cardamom',
@@ -518,16 +542,14 @@ const ProductsPage = ({ onBack }) => {
                             variants={productCardVariants}
                             whileHover={{
                               y: -8,
-                              boxShadow: "0 15px 35px rgba(45, 27, 78, 0.15)",
-                              borderColor: "#2D1B4E",
-                              backgroundColor: "#2D1B4E"
+                              boxShadow: "0 15px 35px rgba(45, 27, 78, 0.15)"
                             }}
                             transition={{ type: "spring", stiffness: 150, damping: 20 }}
                             className="product-minimal-card"
-                            onClick={() => setSelectedProduct(product)}
+                            onClick={() => handleProductSelect(product)}
                           >
                             <div className="card-image-box">
-                              <img src={product.image} alt={product.title} className="card-product-img" />
+                              <img loading="lazy" src={product.image} alt={product.title} className="card-product-img" />
                             </div>
                             <div className="card-info-box">
                               <span className="card-subtitle">{product.subtitle}</span>
@@ -563,7 +585,7 @@ const ProductsPage = ({ onBack }) => {
                   whileHover={{ x: -4 }}
                   transition={{ type: "spring", stiffness: 200, damping: 10 }}
                   className="product-detail-page-back-btn" 
-                  onClick={() => setSelectedProduct(null)}
+                  onClick={handleProductClose}
                 >
                   <ArrowLeft size={16} />
                   <span>Back to Catalog</span>
@@ -575,7 +597,7 @@ const ProductsPage = ({ onBack }) => {
                 {/* Left Column: Premium Image Viewer */}
                 <motion.div className="product-detail-page-image-sec" variants={detailImageVariants}>
                   <div className="product-detail-image-card">
-                    <img src={selectedProduct.image} alt={selectedProduct.title} className="product-detail-img" />
+                    <img loading="lazy" src={selectedProduct.image} alt={selectedProduct.title} className="product-detail-img" />
                   </div>
                 </motion.div>
  

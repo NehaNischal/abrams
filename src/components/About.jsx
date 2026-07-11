@@ -86,7 +86,7 @@ const Categories = ({ onNavigate }) => {
               <button className="dairy-modal-close" onClick={() => setIsModalOpen(false)} aria-label="Close modal">
                 <X size={24} />
               </button>
-              <img src={dairyBg} alt="Something Delicious is on the way! Coming Soon" className="dairy-modal-image" />
+              <img loading="lazy" src={dairyBg} alt="Something Delicious is on the way! Coming Soon" className="dairy-modal-image" />
             </motion.div>
           </motion.div>
         )}

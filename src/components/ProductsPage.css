@@ -283,9 +283,8 @@
   box-shadow: 0 4px 12px rgba(45, 27, 78, 0.015);
   cursor: pointer;
   /* Hover and layout transitions are handled via Framer Motion in ProductsPage.jsx */
-}
-
-/* Hover rule handled by Framer Motion whileHover */
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}/* Hover rule handled by Framer Motion whileHover */
 /*.product-minimal-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(45, 27, 78, 0.15);
@@ -307,21 +306,12 @@
               border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.product-minimal-card:hover .card-image-box {
-  background-color: #2D1B4E;
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
 .card-product-img {
   max-height: 220px;
   max-width: 90%;
   object-fit: contain;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
-}
-
-.product-minimal-card:hover .card-product-img {
-  transform: scale(1.05);
 }
 
 .card-hover-overlay {
@@ -339,10 +329,6 @@
   z-index: 2;
 }
 
-.product-minimal-card:hover .card-hover-overlay {
-  opacity: 1;
-}
-
 .view-details-hover-text {
   background-color: #ffffff;
   color: #2D1B4E;
@@ -355,10 +341,6 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transform: translateY(10px);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.product-minimal-card:hover .view-details-hover-text {
-  transform: translateY(0);
 }
 
 .card-info-box {
@@ -388,12 +370,36 @@
   transition: color 0.4s ease;
 }
 
-.product-minimal-card:hover .card-title {
-  color: #ffffff;
-}
+@media (hover: hover) {
+  .product-minimal-card:hover {
+    border-color: #2D1B4E;
+    background-color: #2D1B4E;
+  }
 
-.product-minimal-card:hover .card-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  .product-minimal-card:hover .card-image-box {
+    background-color: #2D1B4E;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .product-minimal-card:hover .card-product-img {
+    transform: scale(1.05);
+  }
+
+  .product-minimal-card:hover .card-hover-overlay {
+    opacity: 1;
+  }
+
+  .product-minimal-card:hover .view-details-hover-text {
+    transform: translateY(0);
+  }
+
+  .product-minimal-card:hover .card-title {
+    color: #ffffff;
+  }
+
+  .product-minimal-card:hover .card-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+  }
 }
 
 /* No Products Found Block */

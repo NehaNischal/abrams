@@ -63,7 +63,7 @@ const Testimonials = () => {
               </motion.div>
               <p className="testimonial-content">"{item.content}"</p>
               <div className="testimonial-author">
-                <img src={item.image} alt={item.name} />
+                <img loading="lazy" src={item.image} alt={item.name} />
                 <div>
                   <h4>{item.name}</h4>
                   <span>{item.role}</span>

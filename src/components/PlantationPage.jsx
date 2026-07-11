@@ -98,7 +98,7 @@ const PlantationPage = ({ onBack }) => {
                     whileHover={{ scale: 1.03 }}
                     onClick={() => setActiveImage(estate)}
                   >
-                    <img src={estate.image} alt={estate.title} className="estate-image" />
+                    <img loading="lazy" src={estate.image} alt={estate.title} className="estate-image" />
                   </motion.div>
                 </div>
 
@@ -149,7 +149,7 @@ const PlantationPage = ({ onBack }) => {
               <button className="lightbox-close" onClick={() => setActiveImage(null)}>
                 <X size={24} />
               </button>
-              <img src={activeImage.image} alt={activeImage.title} className="lightbox-img" />
+              <img loading="lazy" src={activeImage.image} alt={activeImage.title} className="lightbox-img" />
               <div className="lightbox-caption">
                 <h3>{activeImage.title}</h3>
                 <p>{activeImage.location}{activeImage.elevation ? ` • ${activeImage.elevation}` : ''}</p>
