@@ -36,8 +36,27 @@ function App() {
     } else {
       scrollTargetRef.current = target;
       setCurrentPage(page);
+      window.history.pushState({ page }, '', `/${page === 'home' ? '' : page}`);
     }
   };
+
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (event.state && event.state.page) {
+        setCurrentPage(event.state.page);
+      } else {
+        setCurrentPage('home');
+      }
+    };
+    
+    // Initialize state on first load
+    if (!window.history.state) {
+      window.history.replaceState({ page: 'home' }, '', '/');
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   useEffect(() => {
     const target = scrollTargetRef.current;
