@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, MapPin, Compass, Sun, Wind, X } from 'lucide-react';
-import coffeeImg from '../assets/plantation_coffee.png';
+import coffeeImg from '../assets/coffe_plantation.png';
 import cardamomImg from '../assets/plantation_cardamom.jpg';
 import pepperImg from '../assets/plantation_pepper.png';
 import clovesImg from '../assets/clove.png';
@@ -21,6 +21,15 @@ const PlantationPage = ({ onBack }) => {
       soil: "Humus-rich forest loam",
       sunlight: "Dappled light under canopy trees",
       description: "Deep in the cloudy high-altitude peaks of Idukki, our cardamom plants are sheltered under massive indigenous shade trees. The cool climate, morning mist, and heavy organic forest mulch allow the pods to develop their intense green color, bold size, and highly concentrated essential oils."
+    },
+    {
+      id: 2,
+      image: coffeeImg,
+      title: "Coffee Estates",
+      location: "ABRAMS PLANTATION",
+      soil: "Rich forest loam",
+      sunlight: "Morning mist & filtered canopy light",
+      description: "Cultivated under the shade of towering trees in the misty highlands, our coffee bushes thrive in a cool, humid microclimate. The fragrant white blossoms eventually give way to dense coffee cherries that are carefully hand-picked, ensuring a rich, bold flavor in every cup."
     },
     {
       id: 3,
