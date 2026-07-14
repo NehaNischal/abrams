@@ -2,12 +2,17 @@ import React from 'react';
 import logoImg from '../assets/logo.png';
 
 const Logo = ({ className, style }) => (
-  <img 
-    src={logoImg} 
-    alt="Abrams Logo" 
+  <a 
+    href="/" 
     className={className} 
-    style={{ height: 'var(--logo-height, 110px)', objectFit: 'contain', display: 'block', ...style }} 
-  />
+    style={{ display: 'block', ...style, textDecoration: 'none' }}
+  >
+    <img 
+      src={logoImg} 
+      alt="Abrams Logo" 
+      style={{ height: 'var(--logo-height, 110px)', objectFit: 'contain', display: 'block' }} 
+    />
+  </a>
 );
 
 export default Logo;

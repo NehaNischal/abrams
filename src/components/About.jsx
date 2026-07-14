@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import spicesBg from '../assets/spices_bg.png';
-import dairyBg from '../assets/dairy_bg.jpg';
+import dairyBg from '../assets/milk.png';
 import dairyCardBg from '../assets/dairy_card_bg.png';
 import './About.css';
 
