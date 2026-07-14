@@ -607,18 +607,16 @@ const ProductsPage = ({ onBack }) => {
                     {selectedProduct.title}
                   </motion.h1>
  
-                  {/* Product Specifications Table */}
-                  <div className="product-specs-table-wrapper">
-                    <table className="product-specs-table">
-                      <motion.tbody variants={staggerContainer}>
-                        {getProductSpecs(selectedProduct).map((spec, index) => (
-                          <motion.tr key={index} className="product-specs-row" variants={detailRowVariants}>
-                            <td className="product-specs-key">{spec.key}</td>
-                            <td className="product-specs-val">{spec.val}</td>
-                          </motion.tr>
-                        ))}
-                      </motion.tbody>
-                    </table>
+                  {/* Product Specifications List */}
+                  <div className="product-specs-list-wrapper">
+                    <motion.div variants={staggerContainer} className="product-specs-list">
+                      {getProductSpecs(selectedProduct).map((spec, index) => (
+                        <motion.div key={index} className="product-specs-item" variants={detailRowVariants}>
+                          <div className="product-specs-key">{spec.key}</div>
+                          <div className="product-specs-val">{spec.val}</div>
+                        </motion.div>
+                      ))}
+                    </motion.div>
                   </div>
  
                   {/* CTA Inquiry Link */}
