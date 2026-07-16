@@ -599,6 +599,12 @@ const ProductsPage = ({ onBack }) => {
                   <div className="product-detail-image-card">
                     <img loading="lazy" src={selectedProduct.image} alt={selectedProduct.title} className="product-detail-img" />
                   </div>
+
+                  {/* Overview Section */}
+                  <motion.div className="product-detail-page-overview" variants={detailItemVariants}>
+                    <h3 className="product-detail-page-overview-heading">Overview</h3>
+                    <p className="product-detail-page-overview-para">{selectedProduct.description}</p>
+                  </motion.div>
                 </motion.div>
  
                 {/* Right Column: Information Section */}
@@ -635,12 +641,6 @@ const ProductsPage = ({ onBack }) => {
                     </motion.a>
                   </motion.div>
                 </div>
- 
-                {/* Overview Section */}
-                <motion.div className="product-detail-page-overview" variants={detailItemVariants}>
-                  <h3 className="product-detail-page-overview-heading">Overview</h3>
-                  <p className="product-detail-page-overview-para">{selectedProduct.description}</p>
-                </motion.div>
               </div>
             </motion.div>
           </motion.div>
