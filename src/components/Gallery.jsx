@@ -6,7 +6,7 @@ const images = [
   '/src/assets/plantation_nutmeg.png',
   '/src/assets/plantation_ginger.png',
   '/src/assets/plantation_cardamom.jpg',
-  '/src/assets/clove.png',
+  '/src/assets/clove_plantation.png',
   '/src/assets/misty_estate.png'
 ];
 

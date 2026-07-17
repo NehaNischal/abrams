@@ -4,7 +4,7 @@ import { ArrowLeft, MapPin, Compass, Sun, Wind, X } from 'lucide-react';
 import coffeeImg from '../assets/coffe_plantation.png';
 import cardamomImg from '../assets/plantation_cardamom.jpg';
 import pepperImg from '../assets/plantation_pepper.png';
-import clovesImg from '../assets/clove.png';
+import clovesImg from '../assets/clove_plantation.png';
 import nutmegImg from '../assets/plantation_nutmeg.png';
 import Logo from './Logo';
 import './PlantationPage.css';
