@@ -19,18 +19,21 @@
   --logo-height: 160px;
   margin-bottom: -40px;
   margin-top: -30px;
+  margin-left: -27px;
 }
 
 .footer-bio {
   font-size: 15px;
   color: var(--text-secondary);
-  margin: 8px 0 32px;
+  margin: 16px 0 44px; /* Increased margin-top for balanced spacing from logo, increased margin-bottom for 44px gap to social icons */
   line-height: 1.6;
 }
 
 .social-links {
   display: flex;
-  gap: 20px;
+  gap: 24px; /* Set to 24px as requested */
+  margin: 0;
+  padding: 0;
 }
 
 .social-links a {
@@ -159,5 +162,22 @@
   .footer-links-grid {
     gap: 40px;
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-brand-section .nav-logo-svg {
+    --logo-height: 120px;
+    margin-bottom: -30px;
+    margin-top: -20px;
+    margin-left: -20px; /* Reduced negative margin proportionally for smaller height (120/160 * -27 ≈ -20) */
+  }
+
+  .footer-bio {
+    margin: 12px 0 32px; /* Proportionally smaller spacing */
+  }
+
+  .social-links {
+    gap: 20px; /* Slightly smaller gap on mobile */
   }
 }
