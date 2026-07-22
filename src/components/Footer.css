@@ -25,7 +25,7 @@
 .footer-bio {
   font-size: 15px;
   color: var(--text-secondary);
-  margin: 16px 0 44px; /* Increased margin-top for balanced spacing from logo, increased margin-bottom for 44px gap to social icons */
+  margin: -12px 0 16px;
   line-height: 1.6;
 }
 
@@ -174,7 +174,7 @@
   }
 
   .footer-bio {
-    margin: 12px 0 32px; /* Proportionally smaller spacing */
+    margin: -8px 0 12px;
   }
 
   .social-links {
