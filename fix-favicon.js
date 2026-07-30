@@ -14,32 +14,12 @@ const sizes = [16, 32, 48, 180, 512];
 
 async function generateFavicons() {
   try {
-    // 1. Get the metadata of the original image
-    const metadata = await sharp(srcFavicon).metadata();
-    const size = Math.min(metadata.width, metadata.height);
+    console.log("Generating favicons from favicon.png without cropping or modifying the original logo...");
+    const originalBuffer = fs.readFileSync(srcFavicon);
 
-    // 2. Create a circular SVG mask
-    const circleSvg = Buffer.from(
-      `<svg width="${size}" height="${size}">
-        <circle cx="${size / 2}" cy="${size / 2}" r="${size / 2}" fill="white"/>
-      </svg>`
-    );
-
-    // 3. Process the original image: crop to square, apply circular mask, ensure transparent background
-    const circularImageBuffer = await sharp(srcFavicon)
-      .resize(size, size, { fit: 'cover' })
-      .ensureAlpha()
-      .composite([{
-        input: circleSvg,
-        blend: 'dest-in'
-      }])
-      .png({ force: true })
-      .toBuffer();
-
-    // Now generate all sizes using the circular image
     for (const s of sizes) {
       const dest = path.join(publicDir, `favicon-${s}x${s}.png`);
-      await sharp(circularImageBuffer)
+      await sharp(originalBuffer)
         .resize(s, s, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
         .png()
         .toFile(dest);
@@ -56,7 +36,7 @@ async function generateFavicons() {
     fs.writeFileSync(icoPath, icoBuffer);
     console.log(`Generated ${icoPath}`);
   } catch (err) {
-    console.error('Error generating favicons', err);
+    console.error('Error generating favicons:', err);
   }
 }
 
