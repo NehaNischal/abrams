@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, MapPin, Compass, Sun, Wind, X } from 'lucide-react';
 import coffeeImg from '../assets/coffe_plantation.png';
 import cardamomImg from '../assets/plantation_cardamom.jpg';
@@ -62,6 +63,11 @@ const PlantationPage = ({ onBack }) => {
 
   return (
     <div className="plantation-page">
+      <Helmet>
+        <title>Our Plantations | Abrams India</title>
+        <meta name="description" content="Explore the Abrams Plantations in the misty hills of the Western Ghats." />
+        <link rel="canonical" href="https://www.abramsindia.com/plantation" />
+      </Helmet>
 
       {/* Main Hero Header */}
       <section className="plantation-hero">

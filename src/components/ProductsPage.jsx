@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ChevronDown, ChevronUp, X, MessageSquare, Shield, Droplet, Gem, MapPin, SlidersHorizontal, ArrowLeft } from 'lucide-react';
 import Logo from './Logo';
 import './ProductsPage.css';
 
 // Import product assets
-import cardamomImg from '../assets/cardamom.jpeg';
-import blackPepperImg from '../assets/black_pepper.jpeg';
-import coffeeImg from '../assets/coffee.jpeg';
-import cloveImg from '../assets/clove.jpeg';
-import nutmegImg from '../assets/nutmeg.jpeg';
-import gingerImg from '../assets/ginger_powder.jpeg';
+import cardamomImg from '../assets/abrams-cardamom.jpeg';
+import blackPepperImg from '../assets/abrams-black-pepper.jpeg';
+import coffeeImg from '../assets/abrams-coffee.jpeg';
+import cloveImg from '../assets/abrams-cloves.jpeg';
+import nutmegImg from '../assets/abrams-nutmeg.jpeg';
+import gingerImg from '../assets/abrams-ginger.jpeg';
 
 // Animation Variants
 const staggerContainer = {
@@ -401,6 +402,11 @@ const ProductsPage = ({ onBack }) => {
 
   return (
     <div className="products-page">
+      <Helmet>
+        <title>Premium Spices & Coffee | Abrams India</title>
+        <meta name="description" content="Browse our collection of premium organic spices and specialty coffee." />
+        <link rel="canonical" href="https://www.abramsindia.com/products-page" />
+      </Helmet>
       <AnimatePresence mode="wait">
         {!selectedProduct ? (
           <motion.div

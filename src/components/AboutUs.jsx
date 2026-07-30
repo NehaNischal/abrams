@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Leaf, BadgeCheck, Flame, Sprout } from 'lucide-react';
 import aboutImg from '../assets/about_us.png';
 
@@ -35,6 +36,11 @@ const AboutUs = ({ onBack }) => {
 
   return (
     <section className="about-us-page standalone" id="story">
+      <Helmet>
+        <title>About Abrams | Abrams India</title>
+        <meta name="description" content="The story behind Abrams Premium Spices & Coffee." />
+        <link rel="canonical" href="https://www.abramsindia.com/about-us-page" />
+      </Helmet>
       {/* Drifting Ambient Particles */}
       <div className="about-us-particle particle-x"></div>
       <div className="about-us-particle particle-y"></div>

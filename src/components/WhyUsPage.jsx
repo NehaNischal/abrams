@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Sprout, Ship, HandHeart, Wind, Package, Flame, ShieldCheck, Heart, Crown } from 'lucide-react';
 import Logo from './Logo';
 import './WhyUsPage.css';
@@ -68,6 +69,11 @@ const WhyUsPage = ({ onBack }) => {
 
   return (
     <div className="why-us-page">
+      <Helmet>
+        <title>Why Choose Abrams | Abrams India</title>
+        <meta name="description" content="Learn about our sustainable practices, quality guarantee, and organic commitment." />
+        <link rel="canonical" href="https://www.abramsindia.com/why-us-page" />
+      </Helmet>
       {/* Drifting Ambient Gold and Dark Purple Particles */}
       <div className="why-us-particles-wrapper">
         <div className="why-us-particle particle-a"></div>

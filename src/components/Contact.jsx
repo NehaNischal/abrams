@@ -71,19 +71,22 @@ const Contact = () => {
                 <Phone size={20} />
                 <span>+91 94000 93627, 7907707990</span>
               </motion.a>
-              <motion.div 
+              <motion.a 
+                href="https://www.google.com/maps/search/?api=1&query=Mavady+PO,+Nedumkandam,+Idukki+Kerala"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="detail-item" 
                 variants={itemVariants}
                 whileHover={{ x: 8, color: "var(--accent-olive)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", textDecoration: "none", color: "inherit" }}
               >
                 <MapPin size={20} />
                 <span>
                   Mavady PO, Nedumkandam <br />
                   Idukki Kerala
                 </span>
-              </motion.div>
+              </motion.a>
               <motion.a
                 href="https://www.linkedin.com/company/abramsgroup/posts/?feedView=all"
                 target="_blank"
@@ -118,15 +121,31 @@ const Contact = () => {
             transition={{ type: "spring", stiffness: 60, damping: 14, delay: 0.15 }}
             className="contact-form-container"
           >
-            <form className="contact-form">
+            <form 
+              className="contact-form" 
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const name = formData.get('Name');
+                const email = formData.get('Email');
+                const interest = formData.get('Product Interest');
+                const message = formData.get('Message');
+                const subject = `Website Inquiry from ${name} - ${interest}`;
+                const body = `Name: ${name}\nEmail: ${email}\nInterest: ${interest}\n\nMessage:\n${message}`;
+                
+                // Open Gmail compose window in a new tab
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=abramsgroup.co@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.open(gmailUrl, '_blank');
+              }}
+            >
               <div className="form-group">
-                <input type="text" placeholder="Your Name" required />
+                <input type="text" name="Name" placeholder="Your Name" required />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Your Email" required />
+                <input type="email" name="Email" placeholder="Your Email" required />
               </div>
               <div className="form-group">
-                <select required defaultValue="">
+                <select name="Product Interest" required defaultValue="">
                   <option value="" disabled>Product Interest</option>
                   <option value="cardamom">Cardamom</option>
                   <option value="pepper">Black Pepper</option>
@@ -137,7 +156,7 @@ const Contact = () => {
                 </select>
               </div>
               <div className="form-group">
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <textarea name="Message" placeholder="Your Message" rows="5" required></textarea>
               </div>
               <motion.button 
                 type="submit" 

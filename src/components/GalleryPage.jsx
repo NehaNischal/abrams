@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, X, Maximize2 } from 'lucide-react';
 import Logo from './Logo';
 import './GalleryPage.css';
@@ -46,6 +47,11 @@ const GalleryPage = ({ onBack }) => {
 
   return (
     <div className="gallery-page">
+      <Helmet>
+        <title>Gallery | Abrams India</title>
+        <meta name="description" content="Visuals and imagery from our plantations and premium products." />
+        <link rel="canonical" href="https://www.abramsindia.com/visuals-page" />
+      </Helmet>
       {/* Drifting Ambient Purple & Gold Particles */}
       <div className="gallery-particles-wrapper">
         <div className="gallery-particle particle-1"></div>

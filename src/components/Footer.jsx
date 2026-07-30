@@ -28,10 +28,10 @@ const Footer = () => {
               <ul className="footer-contact-list">
                 <li>
                   <MapPin size={18} className="contact-icon" />
-                  <span>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Mavady+PO,+Nedumkandam,+Idukki+Kerala" target="_blank" rel="noopener noreferrer">
                     Mavady PO, Nedumkandam <br />
                     Idukki Kerala
-                  </span>
+                  </a>
                 </li>
                 <li>
                   <Phone size={18} className="contact-icon" />

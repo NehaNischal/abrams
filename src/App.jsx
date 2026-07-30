@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -212,6 +213,17 @@ function App() {
 
   return (
     <div className="app">
+      <Helmet>
+        <title>Abrams | Premium Organic Spices & Coffee</title>
+        <meta name="description" content="Discover nature's finest, handpicked spices and premium coffee by Abrams. Luxury, sustainable, and 100% organic products for the modern lifestyle." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.abramsindia.com/" />
+        <meta property="og:title" content="Abrams | Premium Organic Spices & Coffee" />
+        <meta property="og:description" content="Discover nature's finest, handpicked spices and premium coffee by Abrams. Luxury, sustainable, and 100% organic products for the modern lifestyle." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.abramsindia.com/" />
+        <meta property="og:image" content="https://www.abramsindia.com/assets/logo.png" />
+      </Helmet>
       <Navbar onNavigate={handleNavigate} isLoaded={true} currentPage={currentPage} />
 
       <AnimatePresence mode="wait">
